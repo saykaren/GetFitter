@@ -1,0 +1,46 @@
+import React, {useState} from 'react';
+import './App.css';
+import userData from '../../data/users';
+
+
+class UserRepository{
+  constructor(id, name, address, email, strideLength, dailyStepGoal, friends){
+    this.id = id;
+    this.name = name;
+    this.address= address;
+    this.email = email;
+    this.strideLength = strideLength;
+    this.dailyStepGoal = dailyStepGoal;
+    this.friends = friends;
+  }
+}
+
+class Activity{
+  constructor(userId, data, numSteps, minutesActive, flightOfStairs){
+    this.userId = userId;
+    this.data = data;
+    this.numSteps = numSteps;
+    this.minutesActive = minutesActive;
+    this.flightOfStairs = flightOfStairs;
+  }
+}
+
+// var contact = userData[0].name;
+
+const UserResult = () => {
+  return (
+    <div>
+      <p>
+        
+      </p>
+ 
+      <div>
+    heeeeellllooo - I will put new friend setup here I think .....
+      </div>
+   </div>
+  );
+};
+
+
+
+export default UserResult
