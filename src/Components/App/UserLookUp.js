@@ -6,6 +6,7 @@ import userData from '../../data/users';
 const UserLookUp = () => {
   const [request, setRequest] = useState(userData[0].name);
   const [userId, setUserID] = useState(0);
+  const [address, setAddress] = useState(userData[0].address);
 
   const handleChange = event => {
     var y = event;
@@ -15,7 +16,9 @@ const UserLookUp = () => {
       if (y > 0 && y < userData.length-1){
         var results = userData[y];
         var nameResults = results["name"];
+        var address = results["address"];
         setRequest(nameResults);
+        setAddress(address)
       }else{
         setRequest(0);}
     };  
@@ -25,19 +28,24 @@ const UserLookUp = () => {
     var x = event.target.value;
     setUserID(event.target.value);
     handleChange(x);
+
   };
 
   return (
     <div>
-      <p>
-        Current Friend... {request}: User ID {userId}
-      </p>
+
         <Input 
           value={userId}
           onChangeInput={userChange}  
         >
-        Input friend number here:
+        Input Your ID:
         </Input>
+      <p>
+        Hello {request} User ID {userId}
+      </p>
+      <section>
+        Contact information {address}
+      </section>
       <div>
 
       </div>

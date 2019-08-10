@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import userData from '../../data/users';
+// import userData from '../../data/users';
 
 
 class UserRepository{
@@ -14,6 +14,8 @@ class UserRepository{
     this.friends = friends;
   }
 }
+
+const Me = new UserRepository(51, "Karen", "address", "email", 5, 1000, []);
 
 class Activity{
   constructor(userId, data, numSteps, minutesActive, flightOfStairs){

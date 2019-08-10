@@ -22,7 +22,7 @@
 .App-link {
   color: #61dafb;
 }
-
+/* 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,4 +30,40 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+.flipCard {
+  border: 1px solid white;
+  width: 30%;
+  transition-duration: 2s;
+  transform-style: preserve-3d;
+}
+
+.flipCard:hover {
+  transform:rotateY(180deg);
+  transition-duration: 2s;
+  
+}
+
+
+.front{
+  background: blue;
+  position: absolute;
+  width: 100%;
+}
+
+.back{
+  background: blueviolet;
+  transform: rotateY(180deg);
+
+}
+
+.front, .back{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
 }
