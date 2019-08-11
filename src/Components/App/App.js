@@ -4,6 +4,7 @@ import Friends from './Friends';
 // import UserResult from './scripts';
 import UserLookUp from './UserLookUp';
 import Graph from './Graph';
+import TodoApp from './ToDo';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Graph />
         <Friends />
         <UserLookUp />
+        <TodoApp/>
       </header>
     </div>
   );
