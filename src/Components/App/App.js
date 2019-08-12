@@ -5,12 +5,14 @@ import Friends from './Friends';
 import UserLookUp from './UserLookUp';
 import Graph from './Graph';
 import TodoApp from './ToDo';
+import List from './List';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <List />
         <Graph />
         <Friends />
         <UserLookUp />

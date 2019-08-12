@@ -3,16 +3,16 @@ import './App.css';
 import userData from '../../data/users';
 
 const ToDo = ({ userId, friends, index }) =>{
+  
+  var idNum = friends-1;
+  var nameData = userData[idNum].name; // is one digit off.... 
+
   return(
     <div 
       className="todo"
      >
-      {userData.index}
-      {userId.name}
-      {userData.userId}
-      Jello
-      {friends}
-      {index}
+      {nameData} : ID {friends}
+
 
     </div>
   );
