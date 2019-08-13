@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import userData from '../../data/users';
 
-
 const FriendList = ({ friends }) =>{
     var idNum = friends-1;
   var nameData = userData[idNum].name; // is one digit off.... 
@@ -17,7 +16,7 @@ const FriendList = ({ friends }) =>{
 
 const UserLookUp = () => {
   const [request, setRequest] = useState(userData[0].name);
-  const [userId, setUserID] = useState(userData[0].id);
+  const [userId, setUserId] = useState(userData[0].id);
   const [address, setAddress] = useState(userData[0].address);
   const [friends, setFriends] = useState(userData[0].friends);
 
@@ -45,11 +44,11 @@ const UserLookUp = () => {
     if (y > 0 && y < userData.length-1){
       var x = event.target.value-1;
       var variable = userData[x].id;
-      setUserID(variable);
+      setUserId(variable);
       handleChange(x);
     }else{
       var zeroV = userData[0].id;
-      setUserID(zeroV);
+      setUserId(zeroV);
     };
   };
 
