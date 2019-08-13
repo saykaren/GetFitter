@@ -2,18 +2,15 @@ import React, {useState} from 'react';
 import './App.css';
 import userData from '../../data/users';
 
-const ToDo = ({ userId, friends, index }) =>{
-  
-  var idNum = friends-1;
-  var nameData = userData[idNum].name; // is one digit off.... 
 
+const FriendList = ({ friends }) =>{
+    var idNum = friends-1;
+  var nameData = userData[idNum].name; // is one digit off.... 
   return(
     <div 
       className="todo"
      >
       {nameData} : ID {friends}
-
-
     </div>
   );
  }
@@ -43,15 +40,21 @@ const UserLookUp = () => {
   };
 
   const userChange = event =>{
-    var x = event.target.value-1;
-    var variable = userData[x].id;
-    setUserID(variable);
-    handleChange(x);
+    var y = event.target.value;
+    console.log({y});
+    if (y > 0 && y < userData.length-1){
+      var x = event.target.value-1;
+      var variable = userData[x].id;
+      setUserID(variable);
+      handleChange(x);
+    }else{
+      var zeroV = userData[0].id;
+      setUserID(zeroV);
+    };
   };
 
   return (
-    <div>
-
+    <div className="userInformation">
         <Input 
           value={userId}
           onChangeInput={userChange}  
@@ -68,20 +71,20 @@ const UserLookUp = () => {
         My friends are: 
         <div className="todo-list">
       {friends.map((friends, index)=>(
-        <ToDo
+        <FriendList
           key={index} 
           friends={friends}
           userId={userId}
           index = {index}
         />
       ))}
-
       </div>
       </section>
  
    </div>
   );
 };
+
 
 const Input = ({value, onChangeInput, children}) => (
   <label>
