@@ -65,9 +65,8 @@ const UserLookUp = () => {
         Contact information {address}
       </section>
       <section>
-        My friends are: {friends}
-      </section>
-      <div className="todo-list">
+        My friends are: 
+        <div className="todo-list">
       {friends.map((friends, index)=>(
         <ToDo
           key={index} 
@@ -78,6 +77,8 @@ const UserLookUp = () => {
       ))}
 
       </div>
+      </section>
+ 
    </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const Graph = () => {
+const Welcome = () => {
   
   return (
     <div className="flipCard">
@@ -15,4 +15,4 @@ const Graph = () => {
   );
 };
 
-export default Graph
+export default Welcome
