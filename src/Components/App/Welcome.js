@@ -4,35 +4,52 @@ import React, {useState} from 'react';
 import userData from '../../data/users';
 
 
+
 const Welcome = () => {
   
   const [userId, setUserId] = useState(userData[0].id);
   const [name, setName] = useState("Guest");
+  const [email, setEmail] = useState("");
  
   const userChange = event => {
-    var y = event.target.value;
-    console.log({y});
-    if (y> 0 && y < userData.length-1){
-      var x = event.target.value-1;
-      console.log({x});
-      var variable = userData[x].id;
-      setUserId(variable);
-      changeContent();
+    var stringEvent = event.target.value;
+    var eventTarget = parseInt(stringEvent);
+    
+    console.log({eventTarget});
+    if (eventTarget> 0 && eventTarget < userData.length-1){
+      var userResultArray = userData.filter(x=>(x.id === eventTarget));
+      var userResultId = userResultArray[0].id;
+      var userResultEmail = userResultArray[0].email;
+      setUserId(userResultId);
+      setEmail(userResultEmail);
+      changeContent(userResultId);
     }else{
-      var zeroV = userData[0].id;
-      console.log({zeroV});
-      setUserId(zeroV);
-      changeContent();
-    }
+      setUserId("");
+      setName("Guest");
+      setEmail("");
+    };
   };
 
-  const changeContent = ()=>{
-    var y = userId;
-    var z = y--;
-    var x = userData[z].name;
-    console.log({z});
-    console.log({x});
-    setName(x);
+  const changeContent = (id)=>{
+    var userResultArray = userData.filter(x=>(x.id === id)) 
+    var userResultName = userResultArray[0].name;
+    setName(userResultName);
+  }
+
+  //Ability for user to input email to change ID and name
+  const emailChange = (event) => {
+    var stringEvent = event.target.value;
+    var userResultArray = userData.filter(x=>(x.email === stringEvent));
+    var userResultId = userResultArray[0].id;
+    if(userResultId>0){
+      setUserId(userResultId);
+      setEmail(stringEvent);
+      changeContent(userResultId);
+    } else{
+      setUserId(0);
+      setName("Wrong email");
+      setEmail("");
+    };
   }
 
   return (
@@ -50,8 +67,15 @@ const Welcome = () => {
           onChangeInput={userChange}  
           className="welcomeInput"
         >
-        ID top
-        </Input>
+        ID:
+      </Input>
+      <InputText
+        value={email}
+        onChangeInput={emailChange}
+        className="welcomeInput"
+      >
+        Email:
+      </InputText>
         <div>
           {name}
         </div>
@@ -69,6 +93,18 @@ const Input = ({value, onChangeInput, children}) => (
       />
   </label>
 );
+
+const InputText = ({value, onChangeInput, children}) => (
+  <label>
+    {children}
+    <input
+      type="text"
+      value={value}
+      onChange={onChangeInput}
+      />
+  </label>
+);
+
 
 
 export default Welcome
