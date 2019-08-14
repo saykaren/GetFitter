@@ -59,7 +59,7 @@ const Welcome = () => {
         Welcome
         </section>
         <section className="back">
-        Back
+        {name}
         </section>
       </div>
       <Input 
