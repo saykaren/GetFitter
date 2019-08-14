@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-
-
 .App-header {
   background-color: #282c34;
   height: 12rem;
@@ -28,6 +26,17 @@
   }
 } */
 
+.back{
+  background: blueviolet;
+  transform: rotateY(180deg);
+}
+
+.exerciseGroup,.youOverview, .sleepInfo, .hydration, .userInformation {
+  background: lightgrey;
+  margin: 1rem;
+  padding: 1rem;
+  width: 39rem;
+}
 
 .flipCard {
   border: 1px solid white;
@@ -39,7 +48,6 @@
 .flipCard:hover {
   transform:rotateY(180deg);
   transition-duration: 2s;
-  
 }
 
 
@@ -49,11 +57,7 @@
   width: 100%;
 }
 
-.back{
-  background: blueviolet;
-  transform: rotateY(180deg);
 
-}
 
 .front, .back{
   height: 100%;
@@ -62,6 +66,12 @@
   align-items: center;
   color: white;
   font-size: 3rem;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .todo {
@@ -106,3 +116,4 @@
 .welcomeSection {
   
 }
+

@@ -3,8 +3,6 @@ import './App.css';
 import React, {useState} from 'react';
 import userData from '../../data/users';
 
-
-
 const Welcome = () => {
   
   const [userId, setUserId] = useState(userData[0].id);
