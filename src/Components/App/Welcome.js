@@ -64,6 +64,7 @@ const Welcome = () => {
           value={userId}
           onChangeInput={userChange}  
           className="welcomeInput"
+          id="userIdTop"
         >
         ID:
       </Input>

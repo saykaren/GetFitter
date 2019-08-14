@@ -31,6 +31,26 @@
   transform: rotateY(180deg);
 }
 
+.bar {
+  height: 16.666666667%;
+  background: green;
+  z-index: 25;
+  border-bottom: 1px solid #222;
+  border-right: 1px solid #222;
+}
+
+.bar-text-content {
+  height: 100%;
+  width: 12%;
+}
+
+.bar-lines-container {
+  width: 88%;
+  height: 100%;
+  position: relative;
+  background: #ddd;
+}
+
 .exerciseGroup,.youOverview, .sleepInfo, .hydration, .userInformation {
   background: lightgrey;
   margin: 1rem;
@@ -57,8 +77,6 @@
   width: 100%;
 }
 
-
-
 .front, .back{
   height: 100%;
   display: flex;
@@ -66,6 +84,27 @@
   align-items: center;
   color: white;
   font-size: 3rem;
+}
+
+.graph{
+  position: relative;
+  max-width: 800px;
+  height: 400px;
+  display: flex;
+}
+
+.text {
+  height: 16.666666667%;
+  padding-top: 0.5rem;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0,0,0,0.1);
+  left: 10%;
 }
 
 .mainContent {

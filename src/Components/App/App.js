@@ -1,45 +1,105 @@
-import React from 'react';
+// import React from 'react';
 import './App.css';
 import Friends from './Friends';
 // import UserResult from './scripts';
 import UserLookUp from './UserLookUp';
-import Welcome from './Welcome';
 import TodoApp from './ToDo';
-
-
+import Exercise from './Exercise';
+import Sleep from './Sleep';
+import React, {useState} from 'react';
+import userData from '../../data/users';
 
 
 function App() {
+
+  const [userId, setUserId] = useState(userData[0].id);
+  const [name, setName] = useState("Guest");
+  const [email, setEmail] = useState("");
+ 
+  const userChange = event => {
+    var stringEvent = event.target.value;
+    var eventTarget = parseInt(stringEvent);
+    
+    console.log({eventTarget});
+    if (eventTarget> 0 && eventTarget < userData.length-1){
+      var userResultArray = userData.filter(x=>(x.id === eventTarget));
+      var userResultId = userResultArray[0].id;
+      var userResultEmail = userResultArray[0].email;
+      setUserId(userResultId);
+      setEmail(userResultEmail);
+      changeContent(userResultId);
+    }else{
+      setUserId("");
+      setName("Guest");
+      setEmail("");
+    };
+  };
+
+  const changeContent = (id)=>{
+    var userResultArray = userData.filter(x=>(x.id === id)) 
+    var userResultName = userResultArray[0].name;
+    setName(userResultName);
+  }
+
+  //Ability for user to input email to change ID and name
+  const emailChange = (event) => {
+    var stringEvent = event.target.value;
+    var userResultArray = userData.filter(x=>(x.email === stringEvent));
+    var userResultId = userResultArray[0].id;
+    if(userResultId>0){
+      setUserId(userResultId);
+      setEmail(stringEvent);
+      changeContent(userResultId);
+    } else{
+      setUserId(0);
+      setName("Wrong email");
+      setEmail("");
+    };
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <Welcome />
+        <div className="welcomeSection">
+          <div className="flipCard">
+            <section className="front">
+            Welcome
+            </section>
+            <section className="back">
+            {name}
+            </section>
+          </div>
+          <Input 
+              value={userId}
+              onChangeInput={userChange}  
+              className="welcomeInput"
+              id="userIdTop"
+            >
+            ID:
+          </Input>
+          <InputText
+            value={email}
+            onChangeInput={emailChange}
+            className="welcomeInput"
+          >
+            Email:
+          </InputText>
+            <div>
+              {name}
+            </div>
+        </div>
       </header>
       <section className="mainContent">
         <div className="youOverview">
           <h1>About Me /Status</h1>
           Put in Your profile
-          <TodoApp/>
+          <TodoApp userId={userId}/>
           Improvement Ideas (like you need more sleep if under 8 hours or more exercise)
         </div>
 
-        <div className="exerciseGroup">
-          <h1>Exercise</h1>
-            <article>
-              Steps
-            </article>
-            <article>
-              Flight of stairs 
-            </article>
-        </div>
+        <Exercise userId={userId} name={name} email={email}/>
 
-        <div className="sleepInfo">
-          <h1>Sleep Data</h1>
-          <article>
-            Your sleep
-            You are under/over 8 hours....(calculate)
-          </article>
-        </div>
+        <Sleep userId={userId} name={name} email={email}/>
 
         <div className="hydration">
           <h1>Hydration H20</h1>
@@ -55,10 +115,33 @@ function App() {
         
       </section>
       <footer className="footer">
-     
+
       </footer>
     </div>
   );
 }
+
+const Input = ({value, onChangeInput, children}) => (
+  <label>
+    {children}
+    <input
+      type="number"
+      value={value}
+      onChange={onChangeInput}
+      />
+  </label>
+);
+
+const InputText = ({value, onChangeInput, children}) => (
+  <label>
+    {children}
+    <input
+      type="text"
+      value={value}
+      onChange={onChangeInput}
+      />
+  </label>
+);
+
 
 export default App;

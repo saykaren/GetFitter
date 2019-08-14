@@ -10,7 +10,7 @@ const Todo = ({ todo, index, completeTodo, removeToDo }) =>{
      { todo.text }
      <div>
        <button onClick={()=> completeTodo(index)}>
-         Complete
+         Done
        </button>
        <button onClick={()=> removeToDo(index)}>
          X
