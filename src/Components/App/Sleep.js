@@ -2,7 +2,7 @@
 import './App.css';
 import React from 'react';
 // import activityData from '../../data/activity';
-import userData from '../../data/users';
+// import userData from '../../data/users';
 
 const Sleep = ({userId, name})=>{
 

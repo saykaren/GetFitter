@@ -7,7 +7,6 @@ const Todo = ({ todo, index, completeTodo, removeToDo }) =>{
     style={{textDecoration: todo.isCompleted ? 'line-through' : ''}}
     className="todo"
     >
-     { todo.text }
      <div>
        <button onClick={()=> completeTodo(index)}>
          Done
@@ -15,6 +14,7 @@ const Todo = ({ todo, index, completeTodo, removeToDo }) =>{
        <button onClick={()=> removeToDo(index)}>
          X
        </button>
+       { todo.text }
      </div>
    </div>
  );
@@ -44,20 +44,21 @@ const TodoForm = ({addTodo}) =>{
 
 }
 
+const completeQ = {isCompleted: false};
 const TodoApp = () => {
 
   const [todos, setTodos] = useState([
     {
       text: "Drink 60oz of water",
-      isCompleted: false
+      completeQ
     },
     {
       text: "Walk 5 miles",
-      isCompleted: false
+      completeQ
     },
     {
       text: "Eat veggie with each meal",
-      isCompleted: false
+      completeQ
     }
   ]);
 

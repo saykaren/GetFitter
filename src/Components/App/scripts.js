@@ -27,7 +27,7 @@ class Activity{
   }
 }
 
-// var contact = userData[0].name;
+// const contact = userData[0].name;
 
 const UserResult = () => {
   return (

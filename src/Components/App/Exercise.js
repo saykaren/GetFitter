@@ -70,7 +70,7 @@ class Exercise extends React.Component {
     const data = activityLocal;
     // const data = activityData; //real data full list probably want friends list
     
-    console.log({data}); //properly coming in
+    // console.log({data}); //properly coming in
     let sumOfAllActivity = data.reduce((acc, curr)=>{
       return acc + curr.numSteps;
     }, 0);

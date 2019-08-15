@@ -17,10 +17,10 @@ function App() {
   const [email, setEmail] = useState("");
  
   const userChange = event => {
-    var stringEvent = event.target.value;
-    var eventTarget = parseInt(stringEvent);
+    const stringEvent = event.target.value;
+    const eventTarget = parseInt(stringEvent);
     
-    console.log({eventTarget});
+    // console.log({eventTarget});
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
@@ -61,30 +61,24 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="welcomeSection">
-          <div className="flipCard">
-            <section className="front">
-            Welcome
-            </section>
-            <section className="back">
-            {name}
-            </section>
-          </div>
-          <Input 
-              value={userId}
-              onChangeInput={userChange}  
+          <section className="welcomeTopInput">
+            <Input 
+                value={userId}
+                onChangeInput={userChange}  
+                className="welcomeInput"
+                id="userIdTop"
+              >
+              Login ID:
+            </Input>
+            <InputText
+              value={email}
+              onChangeInput={emailChange}
               className="welcomeInput"
-              id="userIdTop"
             >
-            ID:
-          </Input>
-          <InputText
-            value={email}
-            onChangeInput={emailChange}
-            className="welcomeInput"
-          >
-            Email:
-          </InputText>
-            <div>
+              Email:
+            </InputText>
+          </section>
+            <div id="welcomeName">
               {name}
             </div>
         </div>
