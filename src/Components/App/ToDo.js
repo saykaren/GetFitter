@@ -45,6 +45,7 @@ const TodoForm = ({addTodo}) =>{
 }
 
 const completeQ = {isCompleted: false};
+
 const TodoApp = () => {
 
   const [todos, setTodos] = useState([
