@@ -61,26 +61,25 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="welcomeSection">
+          {/* <h1 id="appName">GitFitter</h1> */}
+           <div id="welcomeName">
+              {name}
+           </div>
           <section className="welcomeTopInput">
             <Input 
                 value={userId}
                 onChangeInput={userChange}  
-                className="welcomeInput"
-                id="userIdTop"
               >
               Login ID:
             </Input>
             <InputText
               value={email}
               onChangeInput={emailChange}
-              className="welcomeInput"
             >
               Email:
             </InputText>
           </section>
-            <div id="welcomeName">
-              {name}
-            </div>
+
         </div>
       </header>
       <section className="mainContent">
@@ -116,23 +115,29 @@ function App() {
 }
 
 const Input = ({value, onChangeInput, children}) => (
-  <label>
+  <label
+    className="inputLabel"
+  >
     {children}
     <input
       type="number"
       value={value}
       onChange={onChangeInput}
+      className="inputNum"
       />
   </label>
 );
 
 const InputText = ({value, onChangeInput, children}) => (
-  <label>
+  <label
+    className="inputLabel"
+  >
     {children}
     <input
       type="text"
       value={value}
       onChange={onChangeInput}
+      className="inputText"
       />
   </label>
 );

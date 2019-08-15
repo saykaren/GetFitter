@@ -49,7 +49,7 @@
 }
 
 .exerciseGroup,.youOverview, .sleepInfo, .hydration, .userInformation {
-  background: lightgrey;
+  background: #3190D6;
   margin: 1rem;
   padding: 1rem;
   width: 39rem;
@@ -107,6 +107,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: #C4C4C4;
 }
 
 .todo {
@@ -144,6 +145,19 @@
  flex-direction: column;
 }
 
+.inputNum, .inputText {
+  height: 2rem;
+  width: 22rem;
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.inputLabel {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .welcomeInput{
   display: flex;
   align-items: center;
@@ -152,13 +166,16 @@
 #welcomeName {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  font-size: 2rem;
+  color: black;
 }
 
 .welcomeTopInput {
   display: flex;
-
+  width: 15rem;
+  flex-wrap: wrap;
 }
+
 .welcomeSection {
   width: 100%;
   padding: 1rem;
