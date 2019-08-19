@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import userData from '../../data/users';
 
@@ -14,52 +14,14 @@ const FriendList = ({ friends }) =>{
   );
  }
 
-const UserLookUp = ({userId, name}) => {
-  const [address, setAddress] = useState("");
-  const [friends, setFriends] = useState(userData[0].friends);
-  
-  const handleChange = () => {
-    console.log("click");
-    console.log({userId});
-    const userIdObject = userId;
-    console.log({userIdObject});
-
-    if (userIdObject !== undefined){
-      if (userIdObject > 0 && userIdObject < userData.length-1){
-        console.log("I am in handleChange");
-        const myNameId = {userId}; //object
-        const valueId = Object.values(myNameId)[0]; //number format of ID
-
-        const userResultArray = userData.filter(x=>(x.id === valueId)); //give array of user selected
-        const userResultId = userResultArray[0].id; // id of user
-        const userResultAddress = userResultArray[0].address; // email of user
-        const userResultFriendsId = userResultArray[0].friends;
-        console.log(userResultFriendsId);
-        
-        const address = userResultAddress;
-        const friends = userResultFriendsId;
-
-        setAddress(address);
-        setFriends(friends);
-      };
-    };  
-  };
-
-
+const UserLookUp = ({userId, name, friends}) => {
   return (
     <div className="userInformation">
-      <p
-        onChange={handleChange}
-      >
+      <p>
         Hello {name} User ID {userId}
       </p>
-      <button 
-        onClick={handleChange}
-      >
-        click me
-      </button>
       <section>
-        You live at {address} 
+        {/* You live at {address}  */}
       </section>
       <section>
         {name} friends are: 
@@ -70,7 +32,6 @@ const UserLookUp = ({userId, name}) => {
               friends={friends}
               userId={userId}
               index = {index}
-              onChange = {handleChange}
             />
           ))}
       </div>

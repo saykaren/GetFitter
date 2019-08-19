@@ -33,6 +33,7 @@ const Bar = ({percent}) =>{
     <div
       className="bar"
       style={{ width: `${percent}%`}}
+      key={percent}
     />
   )
 }
@@ -60,6 +61,7 @@ const Line = ({ left }) =>{
     <div 
       className="line"
       style={{ left: `${left}%` }}
+      key={left}
     />
   );
 }

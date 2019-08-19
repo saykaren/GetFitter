@@ -18,6 +18,7 @@ const App = () => {
   const [userId, setUserId] = useState(userData[0].id);
   const [name, setName] = useState("Guest");
   const [email, setEmail] = useState("");
+  const [friends, setFriends] = useState(userData[0].friends);
  
   const userChange = event => {
     const stringEvent = event.target.value;
@@ -28,9 +29,11 @@ const App = () => {
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
       var userResultEmail = userResultArray[0].email;
+      const userResultFriendsId = userResultArray[0].friends;
       setUserId(userResultId);
       setEmail(userResultEmail);
       changeContent(userResultId);
+      setFriends(userResultFriendsId);
     }else{
       setUserId("");
       setName("Guest");
@@ -88,7 +91,7 @@ const App = () => {
       <section className="mainContent">
         <AboutMe userId={userId} name={name} email={email}/>
 
-        <Exercise userId={userId} name={name} email={email}/>
+        <Exercise userId={userId} name={name} email={email} friends={friends}/>
 
         <Sleep userId={userId} name={name} email={email}/>
 
@@ -99,11 +102,11 @@ const App = () => {
 
           </article>
         </div>
-        <UserLookUp userId={userId} name={name} email={email}/>
+        <UserLookUp userId={userId} name={name} email={email} friends={friends}/>
         
-        <Friends userId={userId} name={name} email={email}/>
+        <Friends userId={userId} name={name} email={email} friends={friends}/>
 
-        <TempUserLookUp userId={userId} name={name} email={email}/>
+        <TempUserLookUp userId={userId} name={name} email={email} friends={friends}/>
       </section>
       <footer className="footer">
 
