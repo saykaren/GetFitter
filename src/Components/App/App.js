@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 import userData from '../../data/users';
 
 
-function App() {
+const App = () => {
 
   const [userId, setUserId] = useState(userData[0].id);
   const [name, setName] = useState("Guest");
