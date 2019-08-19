@@ -36,7 +36,6 @@ const UserLookUp = ({userId, name}) => {
         const userResultFriendsId = userResultArray[0].friends;
         console.log(userResultFriendsId);
         
-
         const address = userResultAddress;
         const friends = userResultFriendsId;
 
