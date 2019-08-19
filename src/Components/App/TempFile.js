@@ -99,7 +99,8 @@ const TempUserLookUp = ({userId, friends, name}) => {
   console.log({userId});
   console.log({friends});
 
-  const data = activityData.filter(x=>(x.userID === friends[0]));
+  ///8-19-2019 15:48 below is not working...need to figure out how to filter the data down to friends
+  const data = activityData.filter(x=>(x.userID === friends.map(x=>(x))));
   console.log(data);
 
   const renderBars =() =>{
