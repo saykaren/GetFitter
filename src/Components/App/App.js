@@ -3,11 +3,13 @@ import './App.css';
 import Friends from './Friends';
 // import UserResult from './scripts';
 import UserLookUp from './UserLookUp';
-import TodoApp from './ToDo';
+// import TodoApp from './ToDo';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
 import React, {useState} from 'react';
 import userData from '../../data/users';
+import AboutMe from './AboutUser';
+import TempUserLookUp from './TempFile';
 
 
 
@@ -21,7 +23,7 @@ const App = () => {
     const stringEvent = event.target.value;
     const eventTarget = parseInt(stringEvent);
     
-    // console.log({eventTarget});
+    console.log({eventTarget});
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
@@ -84,12 +86,7 @@ const App = () => {
         </div>
       </header>
       <section className="mainContent">
-        <div className="youOverview">
-          <h1>About Me /Status</h1>
-          Put in Your profile
-          <TodoApp userId={userId}/>
-          Improvement Ideas (like you need more sleep if under 8 hours or more exercise)
-        </div>
+        <AboutMe userId={userId} name={name} email={email}/>
 
         <Exercise userId={userId} name={name} email={email}/>
 
@@ -102,11 +99,11 @@ const App = () => {
 
           </article>
         </div>
-        <UserLookUp />
+        <UserLookUp userId={userId} name={name} email={email}/>
         
-        <Friends />
+        <Friends userId={userId} name={name} email={email}/>
 
- 
+        <TempUserLookUp userId={userId} name={name} email={email}/>
       </section>
       <footer className="footer">
 

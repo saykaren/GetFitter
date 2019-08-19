@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 
-const Friends = () => {
+const Friends = ({userId, name}) => {
   const [request, setRequest] = useState("New User");
 
   const handleChange = event => setRequest(event.target.value);
@@ -9,6 +9,7 @@ const Friends = () => {
 
   return (
     <div>
+      {userId}{name}
       <p>
         New Friend... {request}
       </p>

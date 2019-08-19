@@ -3,7 +3,7 @@ import './App.css';
 import userData from '../../data/users';
 
 const FriendList = ({ friends }) =>{
-    const idNum = friends-1;
+  const idNum = friends-1;
   const nameData = userData[idNum].name; // is one digit off.... 
   return(
     <div 
@@ -14,83 +14,71 @@ const FriendList = ({ friends }) =>{
   );
  }
 
-const UserLookUp = () => {
-  const [request, setRequest] = useState(userData[0].name);
-  const [userId, setUserId] = useState(userData[0].id);
-  const [address, setAddress] = useState(userData[0].address);
+const UserLookUp = ({userId, name}) => {
+  const [address, setAddress] = useState("");
   const [friends, setFriends] = useState(userData[0].friends);
-  const handleChange = event => {
-    const y = event;
+  
+  const handleChange = () => {
+    console.log("click");
+    console.log({userId});
+    const userIdObject = userId;
+    console.log({userIdObject});
 
-    if (y !== undefined){
-      if (y > 0 && y < userData.length-1){
-        const results = userData[y];
-        const nameResults = results["name"];
-        const address = results["address"];
-        const friends = results["friends"];
-        setRequest(nameResults);
+    if (userIdObject !== undefined){
+      if (userIdObject > 0 && userIdObject < userData.length-1){
+        console.log("I am in handleChange");
+        const myNameId = {userId}; //object
+        const valueId = Object.values(myNameId)[0]; //number format of ID
+
+        const userResultArray = userData.filter(x=>(x.id === valueId)); //give array of user selected
+        const userResultId = userResultArray[0].id; // id of user
+        const userResultAddress = userResultArray[0].address; // email of user
+        const userResultFriendsId = userResultArray[0].friends;
+        console.log(userResultFriendsId);
+        
+
+        const address = userResultAddress;
+        const friends = userResultFriendsId;
+
         setAddress(address);
         setFriends(friends);
-      }else{
-        setRequest(0);}
+      };
     };  
   };
 
-  const userChange = event =>{
-    const y = event.target.value;
-    if (y > 0 && y < userData.length-1){
-      const x = event.target.value-1;
-      const variable = userData[x].id;
-      setUserId(variable);
-      handleChange(x);
-    }else{
-      const zeroV = userData[0].id;
-      setUserId(zeroV);
-    };
-  };
 
   return (
     <div className="userInformation">
-        <Input 
-          value={userId}
-          onChangeInput={userChange}  
-        >
-        Input Your ID:
-        </Input>
-      <p>
-        Hello {request} User ID {userId}
+      <p
+        onChange={handleChange}
+      >
+        Hello {name} User ID {userId}
       </p>
+      <button 
+        onClick={handleChange}
+      >
+        click me
+      </button>
       <section>
-        Contact information {address}
+        You live at {address} 
       </section>
       <section>
-        My friends are: 
+        {name} friends are: 
         <div className="todo-list">
-      {friends.map((friends, index)=>(
-        <FriendList
-          key={index} 
-          friends={friends}
-          userId={userId}
-          index = {index}
-        />
-      ))}
+          {friends.map((friends, index)=>(
+            <FriendList
+              key={index} 
+              friends={friends}
+              userId={userId}
+              index = {index}
+              onChange = {handleChange}
+            />
+          ))}
       </div>
       </section>
  
    </div>
   );
 };
-
-
-const Input = ({value, onChangeInput, children}) => (
-  <label>
-    {children}
-    <input
-      type="number"
-      value={value}
-      onChange={onChangeInput}
-      />
-  </label>
-);
 
 export default UserLookUp
