@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import userData from '../../data/users';
 
 
+
 const App = () => {
 
   const [userId, setUserId] = useState(userData[0].id);
@@ -105,7 +106,7 @@ const App = () => {
         
         <Friends />
 
-        
+ 
       </section>
       <footer className="footer">
 

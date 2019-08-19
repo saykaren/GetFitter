@@ -64,9 +64,10 @@ const Line = ({ left }) =>{
   );
 }
 
-class Exercise extends React.Component {
 
-  renderBars(){
+const Exercise = () => {
+
+  const renderBars =() =>{
     const data = activityLocal;
     // const data = activityData; //real data full list probably want friends list
     
@@ -82,11 +83,10 @@ class Exercise extends React.Component {
           key={activityData.numSteps}
         />
       )
-    })
+    });
+  };
 
-  }
-
-  renderLines(){
+  const renderLines = () =>{
     return Array(10).fill(null).map((el, i)=>(
       <Line
         left={i * 10}
@@ -95,25 +95,22 @@ class Exercise extends React.Component {
     ))
   }
 
-  render(){
-    return (
-      <div className="graph-wrapper, exerciseGroup">
-        <h1>Friends Steps</h1>
-        
-        <div className="graph">
-   
-          <BarTextContent />
-          <div className="bar-lines-container">
-            {this.renderLines()}
-            {this.renderBars()}
-  
-          </div>
-          
+  return (
+    <div className="graph-wrapper, exerciseGroup">
+      <h1>Friends Steps</h1>
+      
+      <div className="graph">
+ 
+        <BarTextContent />
+        <div className="bar-lines-container">
+          {renderLines()}
+          {renderBars()}
         </div>
+        
       </div>
-    )
-  }
-}
+    </div>
+  )
+};
 
 
 export default Exercise
