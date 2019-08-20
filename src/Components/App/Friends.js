@@ -8,7 +8,7 @@ const Friends = ({Id, name}) => {
 
 
   return (
-    <div>
+    <div className="componentBox">
       {Id}{name}
       <p>
         New Friend... {request}

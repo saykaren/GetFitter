@@ -14,7 +14,7 @@ const Sleep = ({Id, name})=>{
   const goodSleep = parseInt(8-sleepToday);
 
   return(
-    <div className="sleepInfo">
+    <div className="componentBox">
     <h1>Sleep Data</h1>
     <article className="sleepDetails">
       {name} you slept for <span className="bold">{sleepToday}</span> hours last night

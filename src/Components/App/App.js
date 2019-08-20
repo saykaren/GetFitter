@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import TempUserLookUp from './TempFile';
+import Hydration from './Hydration';
 
 
 
@@ -95,13 +96,9 @@ const App = () => {
 
         <Sleep Id={Id} name={name} email={email}/>
 
-        <div className="hydration">
-          <h1>Hydration H20</h1>
-          <article>
-            (bring in picture of water boy)
+        <Hydration Id={Id} name={name} email={email} friends={friends}/>
 
-          </article>
-        </div>
+
         <UserLookUp Id={Id} name={name} email={email} friends={friends}/>
         
         <Friends Id={Id} name={name} email={email} friends={friends}/>

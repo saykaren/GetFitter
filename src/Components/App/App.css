@@ -51,7 +51,14 @@
   font-weight: bold;
 }
 
-.exerciseGroup,.youOverview, .sleepInfo, .hydration, .userInformation {
+#checkMark{
+  height: 1rem;
+}
+
+.componentBox {
+  box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
+  border: 1px solid #ddd;
+  border-radius: 4px;
   background: #3190D6;
   margin: 1rem;
   padding: 1rem;
@@ -123,13 +130,15 @@
 .todo {
   background: #fff;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
-  padding: 3px 10px;
+  padding: 7px 10px;
   font-size: 12px;
   margin-bottom: 6px;
   border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+}
+
+.todoContent {
+  padding: 0.5rem;
 }
 
 .todo-list{
@@ -138,6 +147,13 @@
   padding: 5px;
   max-width: 400px;
   color: black;
+}
+
+.todoSubList {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  flex-wrap: wrap;
 }
 
 .input {
@@ -153,6 +169,10 @@
 .userInformation{
  display: flex;
  flex-direction: column;
+ box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ padding: 5px;
 }
 
 .inputNum, .inputText {
@@ -166,6 +186,13 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+}
+
+#waterGlass {
+  height: 8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .welcomeInput{
@@ -189,5 +216,10 @@
 .welcomeSection {
   width: 100%;
   padding: 1rem;
+}
+
+#xButton {
+  color: red;
+  height: 1rem;
 }
 

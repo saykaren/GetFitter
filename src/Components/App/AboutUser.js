@@ -9,11 +9,9 @@ import TodoApp from './ToDo';
 const AboutMe = ({userId, name}) => {
   return(
 
-    <div className="youOverview">
+    <div className="componentBox">
       <h1>{name} To Do and Suggestions</h1>
       <TodoApp userId={userId}/>
-      
-      Improvement Ideas (like you need more sleep if under 8 hours or more exercise)
     </div>
   );
 }

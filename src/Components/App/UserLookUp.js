@@ -16,15 +16,11 @@ const FriendList = ({ friends }) =>{
 
 const UserLookUp = ({Id, name, friends}) => {
   return (
-    <div className="userInformation">
-      <p>
-        Hello {name} User ID {Id}
-      </p>
+    <div className="componentBox">
+      <h1>
+        {name} Friends:
+      </h1>
       <section>
-        {/* You live at {address}  */}
-      </section>
-      <section>
-        {name} friends are: 
         <div className="todo-list">
           {friends.map((friends, index)=>(
             <FriendList

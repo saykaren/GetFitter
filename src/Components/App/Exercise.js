@@ -96,9 +96,9 @@ const Exercise = () => {
       />
     ))
   }
-
+ 
   return (
-    <div className="graph-wrapper, exerciseGroup">
+    <div className="componentBox">
       <h1>Friends Steps</h1>
       
       <div className="graph">

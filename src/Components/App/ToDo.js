@@ -1,20 +1,37 @@
 import React, {useState} from 'react';
 import './App.css';
+import checkMark from '../../assets/checkMark.png';
 
 const Todo = ({ todo, index, completeTodo, removeToDo }) =>{
  return(
    <div 
-    style={{textDecoration: todo.isCompleted ? 'line-through' : ''}}
+    style={{textDecoration: todo.isCompleted ? 'line-through red' : ''}}
     className="todo"
     >
-     <div>
-       <button onClick={()=> completeTodo(index)}>
-         Done
-       </button>
-       <button onClick={()=> removeToDo(index)}>
-         X
-       </button>
+     <div className="todoSubList">
+       <div className="todoContent">
+        <img src={checkMark} 
+            alt="checkMark"
+            id="checkMark"
+            onClick={()=> completeTodo(index)}
+            
+          />
+       </div>
+
+       <div 
+        onClick={()=> removeToDo(index)} 
+        id="xButton"
+        className="todoContent"
+       >
+        X
+       </div>
+       
+       <div
+        className="todoContent"
+        
+       >
        { todo.text }
+      </div>
      </div>
    </div>
  );
