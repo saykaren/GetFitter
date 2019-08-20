@@ -14,11 +14,11 @@ const FriendList = ({ friends }) =>{
   );
  }
 
-const UserLookUp = ({userId, name, friends}) => {
+const UserLookUp = ({Id, name, friends}) => {
   return (
     <div className="userInformation">
       <p>
-        Hello {name} User ID {userId}
+        Hello {name} User ID {Id}
       </p>
       <section>
         {/* You live at {address}  */}
@@ -30,7 +30,7 @@ const UserLookUp = ({userId, name, friends}) => {
             <FriendList
               key={index} 
               friends={friends}
-              userId={userId}
+              Id={Id}
               index = {index}
             />
           ))}

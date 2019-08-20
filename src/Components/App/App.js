@@ -15,7 +15,7 @@ import TempUserLookUp from './TempFile';
 
 const App = () => {
 
-  const [userId, setUserId] = useState(userData[0].id);
+  const [Id, setId] = useState(userData[0].id);
   const [name, setName] = useState("Guest");
   const [email, setEmail] = useState("");
   const [friends, setFriends] = useState(userData[0].friends);
@@ -24,18 +24,18 @@ const App = () => {
     const stringEvent = event.target.value;
     const eventTarget = parseInt(stringEvent);
     
-    console.log({eventTarget});
+    // console.log({eventTarget});
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
       var userResultEmail = userResultArray[0].email;
       const userResultFriendsId = userResultArray[0].friends;
-      setUserId(userResultId);
+      setId(userResultId);
       setEmail(userResultEmail);
       changeContent(userResultId);
       setFriends(userResultFriendsId);
     }else{
-      setUserId("");
+      setId("");
       setName("Guest");
       setEmail("");
     };
@@ -53,11 +53,11 @@ const App = () => {
     var userResultArray = userData.filter(x=>(x.email === stringEvent));
     var userResultId = userResultArray[0].id;
     if(userResultId>0){
-      setUserId(userResultId);
+      setId(userResultId);
       setEmail(stringEvent);
       changeContent(userResultId);
     } else{
-      setUserId(0);
+      setId(0);
       setName("Wrong email");
       setEmail("");
     };
@@ -73,7 +73,7 @@ const App = () => {
            </div>
           <section className="welcomeTopInput">
             <Input 
-                value={userId}
+                value={Id}
                 onChangeInput={userChange}  
               >
               Login ID:
@@ -89,11 +89,11 @@ const App = () => {
         </div>
       </header>
       <section className="mainContent">
-        <AboutMe userId={userId} name={name} email={email}/>
+        <AboutMe Id={Id} name={name} email={email}/>
 
-        <Exercise userId={userId} name={name} email={email} friends={friends}/>
+        <Exercise Id={Id} name={name} email={email} friends={friends}/>
 
-        <Sleep userId={userId} name={name} email={email}/>
+        <Sleep Id={Id} name={name} email={email}/>
 
         <div className="hydration">
           <h1>Hydration H20</h1>
@@ -102,11 +102,11 @@ const App = () => {
 
           </article>
         </div>
-        <UserLookUp userId={userId} name={name} email={email} friends={friends}/>
+        <UserLookUp Id={Id} name={name} email={email} friends={friends}/>
         
-        <Friends userId={userId} name={name} email={email} friends={friends}/>
+        <Friends Id={Id} name={name} email={email} friends={friends}/>
 
-        <TempUserLookUp userId={userId} name={name} email={email} friends={friends}/>
+        <TempUserLookUp Id={Id} name={name} email={email} friends={friends}/>
       </section>
       <footer className="footer">
 

@@ -4,7 +4,7 @@ import userData from '../../data/users';
 
 const Welcome = () => {
   
-  const [userId, setUserId] = useState(userData[0].id);
+  const [Id, setId] = useState(userData[0].id);
   const [name, setName] = useState("Guest");
   const [email, setEmail] = useState("");
  
@@ -12,16 +12,16 @@ const Welcome = () => {
     var stringEvent = event.target.value;
     var eventTarget = parseInt(stringEvent);
     
-    console.log({eventTarget});
+    // console.log({eventTarget});
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
       var userResultEmail = userResultArray[0].email;
-      setUserId(userResultId);
+      setId(userResultId);
       setEmail(userResultEmail);
       changeContent(userResultId);
     }else{
-      setUserId("");
+      setId("");
       setName("Guest");
       setEmail("");
     };
@@ -39,11 +39,11 @@ const Welcome = () => {
     var userResultArray = userData.filter(x=>(x.email === stringEvent));
     var userResultId = userResultArray[0].id;
     if(userResultId>0){
-      setUserId(userResultId);
+      setId(userResultId);
       setEmail(stringEvent);
       changeContent(userResultId);
     } else{
-      setUserId(0);
+      setId(0);
       setName("Wrong email");
       setEmail("");
     };
@@ -60,7 +60,7 @@ const Welcome = () => {
         </section>
       </div>
       <Input 
-          value={userId}
+          value={Id}
           onChangeInput={userChange}  
           className="welcomeInput"
           id="userIdTop"
