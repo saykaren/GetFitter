@@ -17,12 +17,12 @@ const Sleep = ({Id, name})=>{
     <div className="sleepInfo">
     <h1>Sleep Data</h1>
     <article className="sleepDetails">
-      {name} you slept for {sleepToday} hours last night
+      {name} you slept for <span className="bold">{sleepToday}</span> hours last night
       <p>
-      You are under {goodSleep} hours
+      You need <span className="bold">{goodSleep}</span> hours
       </p>
       <p> 
-      of the 8 hours you need
+      to get to the recommended 8 hours each night you need.
       </p>
       
     </article>

@@ -45,7 +45,10 @@
   width: 88%;
   height: 100%;
   position: relative;
+}
 
+.bold {
+  font-weight: bold;
 }
 
 .exerciseGroup,.youOverview, .sleepInfo, .hydration, .userInformation {
