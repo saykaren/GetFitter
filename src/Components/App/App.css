@@ -77,6 +77,17 @@
   transition-duration: 2s;
 }
 
+.footer{
+  width: 100%;
+  height: 3.5rem;
+  word-wrap: break-word;
+  background-color: #e6e6e6;
+  color: #00a3da;
+  text-align: center;
+  font-size: 1.5rem;
+  bottom: 0;
+}
+
 .front{
   background: blue;
   position: absolute;
@@ -118,6 +129,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: #C4C4C4;
+}
+
+#sayKarenLogo {
+  height: 3.2rem;
 }
 
 .sleepDetails {

@@ -11,6 +11,7 @@ import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import TempUserLookUp from './TempFile';
 import Hydration from './Hydration';
+import Footer from './Footer';
 
 
 
@@ -106,7 +107,7 @@ const App = () => {
         <TempUserLookUp Id={Id} name={name} email={email} friends={friends}/>
       </section>
       <footer className="footer">
-
+        <Footer />
       </footer>
     </div>
   );
