@@ -2,20 +2,20 @@
 import './App.css';
 import React from 'react';
 import activityData from '../../data/activity';
+
 // import userData from '../../data/users';
 
 
 ///using User 6 who has friends 11 48 15
-const firstFriendID = activityData[10].userID;
-const firstFriendSteps = activityData[10].numSteps;
-const secondFriendID = activityData[47].userID;
-const secondFriendSteps = activityData[47].numSteps;
-const thirdFriendID = activityData[14].userID;
-const thirdFriendSteps = activityData[14].numSteps;
+
+// const firstFriendID = activityData[10].userID;
+// const firstFriendSteps = activityData[10].numSteps;
+// const secondFriendID = activityData[47].userID;
+// const secondFriendSteps = activityData[47].numSteps;
+// const thirdFriendID = activityData[14].userID;
+// const thirdFriendSteps = activityData[14].numSteps;
 
 
-// const newArray = [];
-// const activityLocal = newArray.push(myFriends);
 
 const activityLocal = [
   {
@@ -103,19 +103,27 @@ const Line = ({ left }) =>{
 
 const TempUserLookUp = ({friends, name}) => {
 
-  // console.log({Id});
-  console.log({friends});
-  const friendsArray = friends.map(x=>x); //working into an array 
-  console.log(` friends Array is ${friendsArray}`);
+  const friendsList = Object.values({friends})[0]; //should make array
+  const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
+  const newArrayFiltered = limitDateData.filter((x)=> friendsList.includes(x.userID)); //Limits that date now to friends -WORKING!!!! 8/20/2019
+  
 
-  const todayArray = activityData.filter(x=>(x.date === "2019/09/21")) //array of today activity 2019/09/21
-  const testFriendsTodayArray = todayArray.filter(x=>(x.userID === 2)); //filter by a particular id number will do based upon friend list
-  const newResults = testFriendsTodayArray[0].numSteps; //pulls from particular one the steps for that day
+  console.log({newArrayFiltered});
+
+
+  // console.log(friendsList);
+  // console.log({limitDateData});
+  // console.log({newFriendsArray});
+ 
+
+  // const todayArray = activityData.filter(x=>(x.date === "2019/09/21")) //array of today activity 2019/09/21
+  // const testFriendsTodayArray = todayArray.filter(x=>(x.userID === 2)); //filter by a particular id number will do based upon friend list
+  // const newResults = testFriendsTodayArray[0].numSteps; //pulls from particular one the steps for that day
 
   // console.log({testingactivityDataID});
-  console.log({todayArray});
-  console.log({testFriendsTodayArray});
-  console.log({newResults});
+  // console.log({todayArray});
+  // console.log({testFriendsTodayArray});
+  // console.log({newResults});
 
 
   ///8-19-2019 15:48 below is not working...need to figure out how to filter the data down to friends

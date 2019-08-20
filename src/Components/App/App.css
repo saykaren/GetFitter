@@ -137,9 +137,11 @@
 
 .sleepDetails {
   font-size: 1rem;
-  background-color: #C4C4C4;
+  background-color: #fff;
+  border: 2px solid #C4C4C4;
   padding: 1rem;
   margin: 1rem;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
 }
 
 .todo {
