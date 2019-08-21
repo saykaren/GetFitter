@@ -9,9 +9,9 @@ const Friends = ({Id, name}) => {
 
   return (
     <div className="componentBox">
-      {Id}{name}
+      <h1>{request}</h1>
       <p>
-        New Friend... {request}
+        Welcome new friend {request}
       </p>
         <Input 
           value={request}

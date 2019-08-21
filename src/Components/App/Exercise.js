@@ -1,80 +1,57 @@
-// import React, {useState} from 'react';
 import './App.css';
 import React from 'react';
 import activityData from '../../data/activity';
 // import userData from '../../data/users';
 
-const activityLocal = [
-  {
-    "userID": 5,
-    "date": "2019/06/15",
-    "numSteps": 3577,
-    "minutesActive": 140,
-    "flightsOfStairs": 16
-  },
-  {
-    "userID": 7,
-    "date": "2019/06/15",
-    "numSteps": 4294,
-    "minutesActive": 138,
-    "flightsOfStairs": 10
-  },
-  {
-    "userID": 8,
-    "date": "2019/06/15",
-    "numSteps": 7402,
-    "minutesActive": 116,
-    "flightsOfStairs": 33
-  },
-];
 
-const Bar = ({percent}) =>{
-  return(
-    <div
-      className="bar"
-      style={{ width: `${percent}%`}}
-      key={percent}
-    />
-  )
-}
+const Exercise = ({friends}) => {
 
-const BarTextContent = () => {
-  return (
-    <div className="bar-text-content">
-      {activityLocal.map((steps)=>( //used activityLocal but need to change to friends
-        <div 
-          className="text"
-          key={activityLocal.userID}
-        >
-          {steps.userID}
-        </div>
-        ))
-      }
-    </div>
-  )
-}
-
-
-
-const Line = ({ left }) =>{
-  return(
-    <div 
-      className="line"
-      style={{ left: `${left}%` }}
-      key={left}
-    />
-  );
-}
-
-
-const Exercise = () => {
+  const friendsList = Object.values({friends})[0]; //should make array
+  const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
+  const newArrayFiltered = limitDateData.filter((x)=> friendsList.includes(x.userID)); //Limits that date now to friends -WORKING!!!! 8/20/2019
+  
+  const Bar = ({percent}) =>{
+    return(
+      <div
+        className="bar"
+        style={{ width: `${percent}%`}}
+        key={percent}
+      />
+    )
+  }
+  
+  const BarTextContent = () => {
+    return (
+      <div className="bar-text-content">
+        {newArrayFiltered.map((steps)=>( //used activityLocal but need to change to friends
+          <div 
+            className="text"
+            key={newArrayFiltered.userID}
+          >
+            {steps.userID}
+          </div>
+          ))
+        }
+      </div>
+    )
+  }
+  
+  
+  
+  const Line = ({ left }) =>{
+    return(
+      <div 
+        className="line"
+        style={{ left: `${left}%` }}
+        key={left}
+      />
+    );
+  }
 
   const renderBars =() =>{
-    const data = activityLocal;
-    // const data = activityData; //real data full list probably want friends list
-    
-    // console.log({data}); //properly coming in
-    let sumOfAllActivity = data.reduce((acc, curr)=>{
+    const data = newArrayFiltered;
+
+    const sumOfAllActivity = data.reduce((acc, curr)=>{
       return acc + curr.numSteps;
     }, 0);
     return data.map((numSteps)=>{
@@ -82,7 +59,7 @@ const Exercise = () => {
       return(
         <Bar
           percent={percent}
-          key={activityData.numSteps}
+          key={newArrayFiltered.numSteps}
         />
       )
     });
@@ -96,23 +73,20 @@ const Exercise = () => {
       />
     ))
   }
- 
+
   return (
     <div className="componentBox">
       <h1>Friends Steps</h1>
       
       <div className="graph">
- 
         <BarTextContent />
         <div className="bar-lines-container">
           {renderLines()}
           {renderBars()}
-        </div>
-        
+        </div>        
       </div>
     </div>
   )
 };
-
 
 export default Exercise

@@ -99,12 +99,11 @@ const App = () => {
 
         <Hydration Id={Id} name={name} email={email} friends={friends}/>
 
-
         <UserLookUp Id={Id} name={name} email={email} friends={friends}/>
         
         <Friends Id={Id} name={name} email={email} friends={friends}/>
 
-        <TempUserLookUp Id={Id} name={name} email={email} friends={friends}/>
+        
       </section>
       <footer className="footer">
         <Footer />

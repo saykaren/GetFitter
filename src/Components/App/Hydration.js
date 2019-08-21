@@ -20,7 +20,7 @@ const Hydration = ({Id, name})=>{
   const goodHydration = parseInt(80-hydrationToday);
 
   return(
-    <div  className="componentBox">
+    <div className="componentBox">
       <h1>Hydration H20</h1>
       <article>
         <img src={waterGlass} alt="water" id="waterGlass"/>
