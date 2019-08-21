@@ -1,12 +1,11 @@
-// import React from 'react';
-import './App.css';
+import React, {useState} from 'react';
+import './App.scss';
 import Friends from './Friends';
 // import UserResult from './scripts';
 import UserLookUp from './UserLookUp';
 // import TodoApp from './ToDo';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
-import React, {useState} from 'react';
 import userData from '../../data/users';
 import AboutMe from './AboutUser';
 // import TempUserLookUp from './TempFile';

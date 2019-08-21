@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import sayKarenLogo from '../../assets/sayKaren_Logo_transparent_7.2019.png'
 
 const Footer= ()=> (

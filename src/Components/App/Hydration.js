@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import hydrationData from '../../data/hydration';
 import waterGlass from '../../assets/glass_water.jpg';

@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import activityData from '../../data/activity';
 // import userData from '../../data/users';

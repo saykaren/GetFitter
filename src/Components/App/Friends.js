@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './App.css';
 
 const Friends = ({Id, name}) => {
   const [request, setRequest] = useState("New User");

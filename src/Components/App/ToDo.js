@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './App.css';
 import checkMark from '../../assets/checkMark.png';
 
 const Todo = ({ todo, index, completeTodo, removeToDo }) =>{

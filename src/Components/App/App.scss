@@ -1,9 +1,11 @@
+@import './variables.scss'; // $main_color $component_box_color $graph_bar:
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #C4C4C4;
+  background-color: $main_color;
   height: 12rem;
   display: flex;
   font-size: calc(10px + 2vmin);
@@ -15,14 +17,9 @@
   color: #61dafb;
 }
 
-.back{
-  background: blueviolet;
-  transform: rotateY(180deg);
-}
-
 .bar {
   height: 16.666666667%;
-  background: green;
+  background: $graph_bar;
   z-index: 25;
   border-bottom: 1px solid #222;
   border-right: 1px solid #222;
@@ -51,7 +48,7 @@
   box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
   border: 1px solid #ddd;
   border-radius: 4px;
-  background: #3190D6;
+  background: $component_box_color;
   margin: 1rem;
   padding: 1rem;
   width: 39rem;
@@ -73,8 +70,8 @@
   width: 100%;
   height: 3.5rem;
   word-wrap: break-word;
-  background-color: #e6e6e6;
-  color: #00a3da;
+  background-color: $footer;
+  color: $component_box_color;
   text-align: center;
   font-size: 1.5rem;
   bottom: 0;
@@ -83,21 +80,6 @@
 .friendsBox {
   display: flex;
   justify-content: center;
-}
-
-.front{
-  background: blue;
-  position: absolute;
-  width: 100%;
-}
-
-.front, .back{
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 3rem;
 }
 
 .graph{
@@ -117,7 +99,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgba(0,0,0,0.1);
+  background: $graph_line;
   left: 10%;
 }
 
@@ -125,7 +107,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #C4C4C4;
+  background-color: $main_color;
 }
 
 #sayKarenLogo {
@@ -134,15 +116,15 @@
 
 .sleepDetails {
   font-size: 1rem;
-  background-color: #fff;
-  border: 2px solid #C4C4C4;
+  background-color: $white;
+  border: 2px solid $main_color;
   padding: 1rem;
   margin: 1rem;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
 }
 
 .todo {
-  background: #fff;
+  background: $white;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
   padding: 7px 10px;
   font-size: 12px;
@@ -156,11 +138,11 @@
 }
 
 .todo-list{
-  background: #e8e8e8;
+  background: $todo_background;
   border-radius: 4px;
   padding: 5px;
   max-width: 400px;
-  color: black;
+  color: $text_color;
 }
 
 .todoSubList {
@@ -180,14 +162,14 @@
   height: 2.25rem;
 }
 
-.userInformation{
- display: flex;
- flex-direction: column;
- box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
- border: 1px solid #ddd;
- border-radius: 4px;
- padding: 5px;
-}
+// .userInformation{
+//  display: flex;
+//  flex-direction: column;
+//  box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
+//  border: 1px solid #ddd;
+//  border-radius: 4px;
+//  padding: 5px;
+// }
 
 .inputNum, .inputText {
   height: 2rem;
@@ -204,7 +186,7 @@
 
 #waterGlass {
   height: 8rem;
-  border: 1px solid #ddd;
+  border: 1px solid $main_color;
   border-radius: 4px;
   padding: 5px;
 }
@@ -218,7 +200,7 @@
   display: flex;
   justify-content: flex-end;
   font-size: 2rem;
-  color: black;
+  color: $text_color;
 }
 
 .welcomeTopInput {
@@ -233,7 +215,7 @@
 }
 
 #xButton {
-  color: red;
+  color: $red;
   height: 1rem;
 }
 
