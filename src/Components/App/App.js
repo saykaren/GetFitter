@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.scss';
-import Friends from './Friends';
-import UserLookUp from './UserLookUp';
+import NewFriend from './NewFriend';
+import FriendLookUp from './FriendLookUp';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
 import userData from '../../data/users';
@@ -91,9 +91,9 @@ const App = () => {
 
         <Hydration Id={Id} name={name} email={email} friends={friends}/>
 
-        <UserLookUp Id={Id} name={name} email={email} friends={friends}/>
+        <FriendLookUp Id={Id} name={name} email={email} friends={friends}/>
         
-        <Friends Id={Id} name={name} email={email} friends={friends}/>       
+        <NewFriend Id={Id} name={name} email={email} friends={friends}/>       
       </section>
       <footer className="footer">
         <Footer />

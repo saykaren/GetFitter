@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import './Friends.scss';
+import './NewFriend.scss';
 import welcome from '../../assets/welcome.png';
 
-const Friends = ({Id, name}) => {
+const NewFriend = ({Id, name}) => {
   const [request, setRequest] = useState("New User");
 
   const handleChange = event => setRequest(event.target.value);
@@ -39,4 +39,4 @@ const Input = ({value, onChangeInput, children}) => (
 
 
 
-export default Friends
+export default NewFriend

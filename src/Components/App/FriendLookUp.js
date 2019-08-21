@@ -14,7 +14,7 @@ const FriendList = ({ friends }) =>{
   );
  }
 
-const UserLookUp = ({Id, name, friends}) => {
+const FriendLookUp = ({Id, name, friends}) => {
   return (
     <div className="componentBox">
       <h1>
@@ -38,4 +38,4 @@ const UserLookUp = ({Id, name, friends}) => {
   );
 };
 
-export default UserLookUp
+export default FriendLookUp
