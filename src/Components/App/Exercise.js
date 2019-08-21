@@ -1,11 +1,9 @@
 import React from 'react';
 import activityData from '../../data/activity';
 import './Exercise.scss';
-// import userData from '../../data/users';
 
 
 const Exercise = ({friends, name}) => {
-
   const friendsList = Object.values({friends})[0]; //should make array
   const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
   const newArrayFiltered = limitDateData.filter((x)=> friendsList.includes(x.userID)); //Limits that date now to friends -WORKING!!!! 8/20/2019
@@ -26,7 +24,7 @@ const Exercise = ({friends, name}) => {
         {newArrayFiltered.map((steps)=>( //used activityLocal but need to change to friends
           <div 
             className="text"
-            key={newArrayFiltered.userID}
+            key={steps.userID}
           >
             {steps.userID}
           </div>
@@ -34,16 +32,14 @@ const Exercise = ({friends, name}) => {
         }
       </div>
     )
-  }
-  
-  
+  }  
   
   const Line = ({ left }) =>{
     return(
       <div 
         className="line"
         style={{ left: `${left}%` }}
-        key={left}
+        key={{left}}
       />
     );
   }
@@ -59,7 +55,7 @@ const Exercise = ({friends, name}) => {
       return(
         <Bar
           percent={percent}
-          key={newArrayFiltered.numSteps}
+          key={percent}
         />
       )
     });
