@@ -1,0 +1,14 @@
+@import './variables.scss'; // $main_color $component_box_color $graph_bar:
+
+
+.friendsBox {
+  display: flex;
+  justify-content: center;
+}
+
+#friendsImg {
+  height: 15rem;
+  border: 1px solid $main_color;
+  border-radius: 4px;
+  padding: 5px;
+}

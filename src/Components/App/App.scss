@@ -2,6 +2,7 @@
 
 .App {
   text-align: center;
+  font: $main_font;
 }
 
 .App-header {
@@ -10,38 +11,22 @@
   display: flex;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-bottom: 2rem;
+  padding-bottom: 7rem;
+  flex-direction: column;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-.bar {
-  height: 16.666666667%;
-  background: $graph_bar;
-  z-index: 25;
-  border-bottom: 1px solid #222;
-  border-right: 1px solid #222;
-}
-
-.bar-text-content {
-  height: 100%;
-  width: 12%;
-}
-
-.bar-lines-container {
-  width: 88%;
-  height: 100%;
-  position: relative;
+#appName {
+  font-size: 3rem;
+  background: $component_box_color;
+  border: 1px solid $white;
 }
 
 .bold {
   font-weight: bold;
-}
-
-#checkMark{
-  height: 1rem;
 }
 
 .componentBox {
@@ -54,73 +39,11 @@
   width: 39rem;
 }
 
-.flipCard {
-  border: 1px solid white;
-  width: 100%;
-  transition-duration: 2s;
-  transform-style: preserve-3d;
-}
-
-.flipCard:hover {
-  transform:rotateY(180deg);
-  transition-duration: 2s;
-}
-
-.footer{
-  width: 100%;
-  height: 3.5rem;
-  word-wrap: break-word;
-  background-color: $footer;
-  color: $component_box_color;
-  text-align: center;
-  font-size: 1.5rem;
-  bottom: 0;
-}
-
-.friendsBox {
-  display: flex;
-  justify-content: center;
-}
-
-.graph{
-  position: relative;
-  max-width: 800px;
-  height: 400px;
-  display: flex;
-}
-
-.text {
-  height: 16.666666667%;
-  padding-top: 0.5rem;
-}
-
-.line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: $graph_line;
-  left: 10%;
-}
-
 .mainContent {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background-color: $main_color;
-}
-
-#sayKarenLogo {
-  height: 3.2rem;
-}
-
-.sleepDetails {
-  font-size: 1rem;
-  background-color: $white;
-  border: 2px solid $main_color;
-  padding: 1rem;
-  margin: 1rem;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
 }
 
 .todo {
@@ -130,7 +53,6 @@
   font-size: 12px;
   margin-bottom: 6px;
   border-radius: 3px;
-
 }
 
 .todoContent {
@@ -162,15 +84,6 @@
   height: 2.25rem;
 }
 
-// .userInformation{
-//  display: flex;
-//  flex-direction: column;
-//  box-shadow: 6px 6px 9px rgba(0,0,0,0.15);
-//  border: 1px solid #ddd;
-//  border-radius: 4px;
-//  padding: 5px;
-// }
-
 .inputNum, .inputText {
   height: 2rem;
   width: 22rem;
@@ -196,13 +109,6 @@
   align-items: center;
 }
 
-#welcomeName {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 2rem;
-  color: $text_color;
-}
-
 .welcomeTopInput {
   display: flex;
   width: 15rem;
@@ -214,8 +120,4 @@
   padding: 1rem;
 }
 
-#xButton {
-  color: $red;
-  height: 1rem;
-}
 

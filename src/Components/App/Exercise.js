@@ -1,5 +1,6 @@
 import React from 'react';
 import activityData from '../../data/activity';
+import './Exercise.scss';
 // import userData from '../../data/users';
 
 

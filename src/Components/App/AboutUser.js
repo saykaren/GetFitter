@@ -1,9 +1,6 @@
-// import React, {useState} from 'react';
 import React from 'react';
-// import activityData from '../../data/activity';
-// import userData from '../../data/users';
 import TodoApp from './ToDo';
-
+import './AboutUser.scss';
 
 const AboutMe = ({userId, name}) => {
   return(

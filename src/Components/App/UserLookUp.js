@@ -1,5 +1,6 @@
 import React from 'react';
 import userData from '../../data/users';
+import friendsImg from '../../assets/friends.png';
 
 const FriendList = ({ friends }) =>{
   const idNum = friends-1;
@@ -20,6 +21,7 @@ const UserLookUp = ({Id, name, friends}) => {
         {name} Friends:
       </h1>
       <section className="friendsBox">
+      <img src={friendsImg} id="friendsImg" alt="friends"/>
         <div className="todo-list">
           {friends.map((friends, index)=>(
             <FriendList

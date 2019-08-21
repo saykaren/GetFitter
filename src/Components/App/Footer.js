@@ -1,5 +1,6 @@
 import React from 'react';
 import sayKarenLogo from '../../assets/sayKaren_Logo_transparent_7.2019.png'
+import './Footer.scss';
 
 const Footer= ()=> (
     <div>

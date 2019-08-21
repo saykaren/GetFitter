@@ -1,6 +1,6 @@
 import React from 'react';
 import hydrationData from '../../data/hydration';
-import waterGlass from '../../assets/glass_water.jpg';
+import waterGlass from '../../assets/water_glass.png';
 
 const Hydration = ({Id, name})=>{
   const hydrationIdFilter = hydrationData.filter(x=>(x.userID === Id));

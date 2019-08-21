@@ -1,18 +1,13 @@
 import React, {useState} from 'react';
 import './App.scss';
 import Friends from './Friends';
-// import UserResult from './scripts';
 import UserLookUp from './UserLookUp';
-// import TodoApp from './ToDo';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
 import userData from '../../data/users';
 import AboutMe from './AboutUser';
-// import TempUserLookUp from './TempFile';
 import Hydration from './Hydration';
 import Footer from './Footer';
-
-
 
 const App = () => {
 
@@ -24,8 +19,7 @@ const App = () => {
   const userChange = event => {
     const stringEvent = event.target.value;
     const eventTarget = parseInt(stringEvent);
-    
-    // console.log({eventTarget});
+  
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
       var userResultId = userResultArray[0].id;
@@ -36,7 +30,7 @@ const App = () => {
       changeContent(userResultId);
       setFriends(userResultFriendsId);
     }else{
-      setId("");
+      setId(1);
       setName("Guest");
       setEmail("");
     };
@@ -67,11 +61,9 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <h1 id="appName">GitFitter {name}</h1>
         <div className="welcomeSection">
-          {/* <h1 id="appName">GitFitter</h1> */}
-           <div id="welcomeName">
-              {name}
-           </div>
+          
           <section className="welcomeTopInput">
             <Input 
                 value={Id}
@@ -86,6 +78,7 @@ const App = () => {
               Email:
             </InputText>
           </section>
+ 
 
         </div>
       </header>
@@ -100,9 +93,7 @@ const App = () => {
 
         <UserLookUp Id={Id} name={name} email={email} friends={friends}/>
         
-        <Friends Id={Id} name={name} email={email} friends={friends}/>
-
-        
+        <Friends Id={Id} name={name} email={email} friends={friends}/>       
       </section>
       <footer className="footer">
         <Footer />
@@ -138,6 +129,5 @@ const InputText = ({value, onChangeInput, children}) => (
       />
   </label>
 );
-
 
 export default App;
