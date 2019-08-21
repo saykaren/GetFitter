@@ -9,7 +9,7 @@ import Sleep from './Sleep';
 import React, {useState} from 'react';
 import userData from '../../data/users';
 import AboutMe from './AboutUser';
-import TempUserLookUp from './TempFile';
+// import TempUserLookUp from './TempFile';
 import Hydration from './Hydration';
 import Footer from './Footer';
 

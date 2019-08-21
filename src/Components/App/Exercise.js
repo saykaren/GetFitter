@@ -4,7 +4,7 @@ import activityData from '../../data/activity';
 // import userData from '../../data/users';
 
 
-const Exercise = ({friends}) => {
+const Exercise = ({friends, name}) => {
 
   const friendsList = Object.values({friends})[0]; //should make array
   const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
@@ -76,7 +76,7 @@ const Exercise = ({friends}) => {
 
   return (
     <div className="componentBox">
-      <h1>Friends Steps</h1>
+      <h1>{name}'s Friends Steps</h1>
       
       <div className="graph">
         <BarTextContent />

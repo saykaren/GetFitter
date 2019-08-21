@@ -8,20 +8,12 @@
   display: flex;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-bottom: 2rem;
 }
 
 .App-link {
   color: #61dafb;
 }
-/* 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 .back{
   background: blueviolet;
@@ -86,6 +78,11 @@
   text-align: center;
   font-size: 1.5rem;
   bottom: 0;
+}
+
+.friendsBox {
+  display: flex;
+  justify-content: center;
 }
 
 .front{

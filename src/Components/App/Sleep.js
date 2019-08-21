@@ -1,8 +1,5 @@
-import React, {useState} from 'react';
 import './App.css';
-// import React from 'react';
-// import activityData from '../../data/activity';
-// import userData from '../../data/users';
+import React from 'react';
 import sleepData from '../../data/sleep';
 
 const Sleep = ({Id, name})=>{
@@ -10,7 +7,6 @@ const Sleep = ({Id, name})=>{
   const sleepIdFilter = sleepData.filter(x=>(x.userID === Id));
   const todaySleepID = sleepIdFilter.filter(x=>(x.date === "2019/09/22"));
   const sleepToday = todaySleepID[0]["hoursSlept"];
-  // console.log({todaySleepID});
   const goodSleep = parseInt(8-sleepToday);
 
   return(

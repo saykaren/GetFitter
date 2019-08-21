@@ -20,7 +20,7 @@ const UserLookUp = ({Id, name, friends}) => {
       <h1>
         {name} Friends:
       </h1>
-      <section>
+      <section className="friendsBox">
         <div className="todo-list">
           {friends.map((friends, index)=>(
             <FriendList
