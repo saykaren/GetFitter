@@ -1,4 +1,5 @@
 {
+  "homepage": "http://saykaren.github.io/GitFitter_DeployedSite",
   "name": "getfitter",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +13,8 @@
     "react-useinterval": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+	  "deploy": "gh-pages -d build -b master",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
