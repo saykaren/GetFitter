@@ -8,12 +8,7 @@ import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import Hydration from './Hydration';
 import Footer from './Footer';
-// const express = require('express');
-// const app = express();
-// const port = 3000;
 
-// app.get('/', (req, res) => res.send('Hello World'));
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
 const App = () => {
@@ -22,10 +17,29 @@ const App = () => {
   const [name, setName] = useState("Guest");
   const [email, setEmail] = useState("");
   const [friends, setFriends] = useState(userData[0].friends);
+  const [state, setState] = useState(null);
+
+  const componentDidMount = () =>{
+    callBackendAPI()
+      .then(res=>setState({res}))
+      .catch(err=>console.log(err));
+  };
+
+  const callBackendAPI = async () => {
+    const response = await fetch('/user');
+    const body = await response.json();
+
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }
+    return body;
+  }
+
  
   const userChange = event => {
     const stringEvent = event.target.value;
     const eventTarget = parseInt(stringEvent);
+    componentDidMount();
   
     if (eventTarget> 0 && eventTarget < userData.length-1){
       var userResultArray = userData.filter(x=>(x.id === eventTarget));
@@ -70,7 +84,7 @@ const App = () => {
       <header className="App-header">
         <h1 id="appName">GitFitter {name}</h1>
         <div className="welcomeSection">
-          
+          State is here {state}
           <section className="welcomeTopInput">
             <Input 
                 value={Id}
