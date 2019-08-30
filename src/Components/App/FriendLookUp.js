@@ -1,10 +1,26 @@
 import React from 'react';
-import userData from '../../data/users';
+// import userData from '../../data/users';
 import friendsImg from '../../assets/friends.png';
 
-const FriendList = ({ friends }) =>{
-  const idNum = friends-1;
-  const nameData = userData[idNum].name; // is one digit off.... 
+const FriendList = ({ friends, users}) =>{
+  const idNum = friends;
+  // const data = users["data"];
+  // const results = data.filter(x=>(x.id === 2));
+  
+  // console.log({users});
+  // console.log({results});
+  // console.log(data);
+  // console.log(typeof(data));
+  // const result = users['data'][0];
+  // console.log({result});
+  // const nameData = users['data'].filter(x=>x.id === idNum);
+  const nameData = friends;
+  
+
+
+  // const nameData = users.data.filter(x=>(x.id == friends))[0].name;
+  
+
   return(
     <div 
       className="todo"
@@ -12,9 +28,11 @@ const FriendList = ({ friends }) =>{
       {nameData} : ID {friends}
     </div>
   );
- }
 
-const FriendLookUp = ({Id, name, friends}) => {
+}
+  
+
+const FriendLookUp = ({Id, name, friends, users}) => {
   return (
     <div className="componentBox">
       <h1>
@@ -29,6 +47,7 @@ const FriendLookUp = ({Id, name, friends}) => {
               friends={friends}
               Id={Id}
               index = {index}
+              users ={users}
             />
           ))}
       </div>

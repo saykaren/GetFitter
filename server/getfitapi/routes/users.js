@@ -6,6 +6,15 @@ router.get('/', function(req, res, next) {
   
   let dataArray = [
     {
+      "id":0,
+      "name":"Guest",
+      "address":"No address on file",
+      "email":"",
+      "strideLength":0,
+      "dailyStepGoal":0,
+      "friends":[1]
+    },
+    {
       "id": 1,
       "name": "Luisa Hane",
       "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",

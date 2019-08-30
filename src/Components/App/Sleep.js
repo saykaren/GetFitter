@@ -3,9 +3,9 @@ import sleepData from '../../data/sleep';
 import sleepImg from '../../assets/sleep.png';
 import './Sleep.scss';
 
-const Sleep = ({Id, name})=>{
-
-  const sleepIdFilter = sleepData.filter(x=>(x.userID === Id));
+const Sleep = ({sleepId, name})=>{
+  
+  const sleepIdFilter = sleepData.filter(x=>(x.userID === sleepId));
   const todaySleepID = sleepIdFilter.filter(x=>(x.date === "2019/09/22"));
   const sleepToday = todaySleepID[0]["hoursSlept"];
   const goodSleep = parseInt(8-sleepToday);
