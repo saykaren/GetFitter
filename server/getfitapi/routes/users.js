@@ -690,9 +690,14 @@ router.get('/', function(req, res, next) {
     }
   ];
 
-    res.json({
-      data: dataArray
-    });
+    
+    // res.json({
+    //   dataArray
+    // });
+    // res.json([
+    //   dataArray
+    // ])
+    res.send(dataArray);
   });
 
 module.exports = router;
