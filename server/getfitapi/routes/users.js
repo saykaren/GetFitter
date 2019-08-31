@@ -690,13 +690,6 @@ router.get('/', function(req, res, next) {
     }
   ];
 
-    
-    // res.json({
-    //   dataArray
-    // });
-    // res.json([
-    //   dataArray
-    // ])
     res.send(dataArray);
   });
 
