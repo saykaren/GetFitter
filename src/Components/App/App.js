@@ -4,7 +4,6 @@ import NewFriend from './NewFriend';
 import FriendLookUp from './FriendLookUp';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
-// import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import Hydration from './Hydration';
 import Footer from './Footer';
