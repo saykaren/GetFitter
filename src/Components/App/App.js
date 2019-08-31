@@ -11,7 +11,7 @@ import Footer from './Footer';
 
 const App = () => {
 
-  const guestData = { "data": [
+  const guestData = [
     {
       "id":0,
       "name":"Guest",
@@ -26,18 +26,17 @@ const App = () => {
         13
       ]
     }
-  ]}  
+  ];  
 
-  const [users, setUsers] = useState([]);
-  const [Id, setId] = useState(guestData["data"][0].id);
-  const [name, setName] = useState(guestData["data"][0].name);
-  const [email, setEmail] = useState(guestData["data"][0].email);
-  const [friends, setFriends] = useState(guestData["data"][0].friends);
+  const [users, setUsers] = useState(guestData);
+  const [Id, setId] = useState(guestData[0].id);
+  const [name, setName] = useState(guestData[0].name);
+  const [email, setEmail] = useState(guestData[0].email);
+  const [friends, setFriends] = useState(guestData[0].friends);
+  const [friendNames, setFriendNames] = useState([]);
   const [hasErrors, setErrors] = useState(false);
-  const [friendNames, setFriendNames] = useState(["No friends right now"]);
-  
-  console.log({Id});
-  console.log({friends});
+  // const [friendNames, setFriendNames] = useState(["No friends right now"]);
+  // console.log({friendNames});
 
   useEffect(() => {
     async function fetchData() {
@@ -45,22 +44,25 @@ const App = () => {
       res
       .json()
       .then(res => setUsers(res))
-      .then(res => setId(res[0].Id))
       .catch(err => setErrors(err));
     }
+    
     fetchData();
   }, []);
 
+  // console.log(users[0]);
+  // console.log({Id});
 
   const userChange = event => {
     const stringEvent = event.target.value;
     const eventTarget = parseInt(stringEvent);
-  
-    if (eventTarget> 0 && eventTarget < users["data"].length){
-      var userResultArray =  users["data"].filter(x=>(x.id === eventTarget));
+    if (eventTarget> 0 && eventTarget < users.length-1){
+      
+      var userResultArray =  users.filter(x=>(x.id === eventTarget));
+      
       var userResultId = userResultArray[0].id;
       var userResultEmail = userResultArray[0].email;
-      const userResultFriendsId = userResultArray[0].friends;
+      const userResultFriendsId = userResultArray[0].friends; //array of friends id
       const userResultName = userResultArray[0].name;
       setId(userResultId);
       setEmail(userResultEmail);
@@ -68,20 +70,30 @@ const App = () => {
       setFriends(userResultFriendsId);
       setName(userResultName);
 
-    //   const testingResult = users["data"].filter(x=>(x.id === 15));
-    // console.log({users});
-    // console.log({friends});
-    // console.log({testingResult});
+      const arrayFriendsUserData = userResultFriendsId.map(x=>(users.filter(y=>(y.id === x))));
+
+      const specificItems = arrayFriendsUserData.map(y=>(y.map(x=>(x.name))));//pulls the names that match the friend ids
+      const resultName = specificItems[1][0]; //pulling a specific name 
+      const karenName = specificItems.map(x=>(x[0]));
+
+      setFriendNames(arrayFriendsUserData);
+
+      // console.log(arrayFriendsUserData);
+      // console.log(specificItems);
+      // console.log(resultName);
+      // console.log(`specific names are ${karenName}`);
+
+
      
     }else{
-      setId(guestData["data"][0].id);
-      setName(guestData["data"][0].name);
-      setEmail(guestData["data"][0].email);
+      setId(guestData[0].id);
+      setName(guestData[0].name);
+      setEmail(guestData[0].email);
     };
   };
 
   const changeContent = (id)=>{
-    var userResultArray =  users["data"].filter(x=>(x.id === id)) 
+    var userResultArray =  users.filter(x=>(x.id === id)) 
     var userResultName = userResultArray[0].name;
     setName(userResultName);
   }
@@ -89,7 +101,7 @@ const App = () => {
   //Ability for user to input email to change ID and name
   const emailChange = (event) => {
     var stringEvent = event.target.value;
-    var userResultArray =  users["data"].filter(x=>(x.email === stringEvent));
+    var userResultArray =  users.filter(x=>(x.email === stringEvent));
     var userResultId = userResultArray[0].id;
     if(userResultId>0){
       setId(userResultId);
@@ -129,10 +141,10 @@ const App = () => {
       <section className="mainContent">
          <AboutMe Id={Id} name={name} email={email}/>
   
-         <Exercise Id={Id} name={name} email={email} friends={friends}/>
+         <Exercise Id={Id} name={name} email={email} friends={friends} friendNames={friendNames}/>
          <Sleep sleepId={Id} name={name}/> 
          <Hydration Id={Id} name={name} email={email} friends={friends}/>
-         <FriendLookUp users={users} Id={Id} name={name} email={email} friends={friends}/>
+         <FriendLookUp users={users} Id={Id} name={name} email={email} friends={friends} friendNames={friendNames}/>
          <NewFriend Id={Id} name={name} email={email} friends={friends}/>       
       </section>
       <footer className="footer">

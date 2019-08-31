@@ -3,10 +3,13 @@ import activityData from '../../data/activity';
 import './Exercise.scss';
 
 
-const Exercise = ({friends, name}) => {
+const Exercise = ({friends, name, friendNames}) => {
   const friendsList = Object.values({friends})[0]; //should make array
   const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
   const newArrayFiltered = limitDateData.filter((x)=> friendsList.includes(x.userID)); //Limits that date now to friends -WORKING!!!! 8/20/2019
+
+  const specificItems = friendNames.map(y=>(y.map(x=>(x.name))));//pulls the names that match the friend ids
+  const filteredName = specificItems.map(x=>(x[0]));
   
   const Bar = ({percent}) =>{
     return(
@@ -21,12 +24,12 @@ const Exercise = ({friends, name}) => {
   const BarTextContent = () => {
     return (
       <div className="bar-text-content">
-        {newArrayFiltered.map((steps)=>( //used activityLocal but need to change to friends
+        {newArrayFiltered.map((steps, x)=>( //used activityLocal but need to change to friends
           <div 
             className="text"
             key={steps.userID}
           >
-            {steps.userID}
+            {filteredName[x]}
           </div>
           ))
         }

@@ -2,37 +2,23 @@ import React from 'react';
 // import userData from '../../data/users';
 import friendsImg from '../../assets/friends.png';
 
-const FriendList = ({ friends, users}) =>{
-  const idNum = friends;
-  // const data = users["data"];
-  // const results = data.filter(x=>(x.id === 2));
-  
-  // console.log({users});
-  // console.log({results});
-  // console.log(data);
-  // console.log(typeof(data));
-  // const result = users['data'][0];
-  // console.log({result});
-  // const nameData = users['data'].filter(x=>x.id === idNum);
-  const nameData = friends;
-  
-
-
-  // const nameData = users.data.filter(x=>(x.id == friends))[0].name;
-  
-
+const FriendList = ({ friends, users, friendNames}) =>{
   return(
     <div 
       className="todo"
      >
-      {nameData} : ID {friends}
+    {friends} 
     </div>
   );
 
 }
   
 
-const FriendLookUp = ({Id, name, friends, users}) => {
+const FriendLookUp = ({Id, name, friends, users, friendNames}) => {
+  const specificItems = friendNames.map(y=>(y.map(x=>(x.name))));//pulls the names that match the friend ids
+  const filteredName = specificItems.map(x=>(x[0]));
+  // console.log(filteredName);
+
   return (
     <div className="componentBox">
       <h1>
@@ -41,13 +27,14 @@ const FriendLookUp = ({Id, name, friends, users}) => {
       <section className="friendsBox">
       <img src={friendsImg} id="friendsImg" alt="friends"/>
         <div className="todo-list">
-          {friends.map((friends, index)=>(
+          {filteredName.map((friends, index)=>(
             <FriendList
               key={index} 
               friends={friends}
               Id={Id}
               index = {index}
               users ={users}
+              friendNames ={friendNames}
             />
           ))}
       </div>
