@@ -4,14 +4,12 @@ import NewFriend from './NewFriend';
 import FriendLookUp from './FriendLookUp';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
-// import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import Hydration from './Hydration';
 import Footer from './Footer';
 
 const App = () => {
-  console.log()
-
+  
   const guestData = [
     {
       "id":0,
@@ -37,16 +35,12 @@ const App = () => {
   const [hasErrors, setErrors] = useState(false);
   const [friendNames, setFriendNames] = useState(["No friends right now"]);
   
-  console.log({Id});
-  console.log({friends});
-
   useEffect(() => {
     async function fetchData() {
       const res = await fetch('http://localhost:3000/users');
       res
       .json()
       .then(res => setUsers(res))
-      .then(res => setId(res[0].Id))
       .catch(err => setErrors(err));
     }
     fetchData();
@@ -67,13 +61,7 @@ const App = () => {
       setEmail(userResultEmail);
       changeContent(userResultId);
       setFriends(userResultFriendsId);
-      setName(userResultName);
-
-    //   const testingResult = users["data"].filter(x=>(x.id === 15));
-    // console.log({users});
-    // console.log({friends});
-    // console.log({testingResult});
-     
+      setName(userResultName);    
     }else{
       setId(guestData[0].id);
       setName(guestData[0].name);
