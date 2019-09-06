@@ -50,7 +50,7 @@ const App = () => {
 
 
   const userChange = event => {
-    const stringEvent = event.target.value;
+    const stringEvent = event.currentTarget.value;
     const eventTarget = parseInt(stringEvent);
   
     if (eventTarget> 0 && eventTarget < users.length-1){
