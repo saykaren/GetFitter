@@ -35,14 +35,16 @@ const App = () => {
   const [hasErrors, setErrors] = useState(false);
   const [friendNames, setFriendNames] = useState(["No friends right now"]);
   
+  async function fetchData() {
+    const res = await fetch('http://localhost:3000/users');
+    res
+    .json()
+    .then(res => setUsers(res))
+    .catch(err => setErrors(err));
+  };
+
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('http://localhost:3000/users');
-      res
-      .json()
-      .then(res => setUsers(res))
-      .catch(err => setErrors(err));
-    }
+    
     fetchData();
   }, []);
 
