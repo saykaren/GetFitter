@@ -48,14 +48,13 @@ const App = () => {
     fetchData();
   }, []);
 
+  const userChange = ({ currentTarget: { value }}) => {
+    const userIdEvent = parseInt(value);
 
-  const userChange = event => {
-    const userIdEvent = parseInt(event.currentTarget.value);
-      
     if (userIdEvent> 0 && userIdEvent < users.length-1){
-      var userResultArray =  users.filter(x=>(x.id === userIdEvent));
-      var userResultId = userResultArray[0].id;
-      var userResultEmail = userResultArray[0].email;
+      const userResultArray =  users.filter(x=>(x.id === userIdEvent));
+      const userResultId = userResultArray[0].id;
+      const userResultEmail = userResultArray[0].email;
       const userResultFriendsId = userResultArray[0].friends;
       const userResultName = userResultArray[0].name;
       setId(userResultId);
@@ -68,22 +67,22 @@ const App = () => {
       setName(guestData[0].name);
       setEmail(guestData[0].email);
     };
-  };
+  }
+
 
   const changeContent = (id)=>{
-    var userResultArray =  users.filter(x=>(x.id === id)) 
-    var userResultName = userResultArray[0].name;
+    const userResultArray =  users.filter(x=>(x.id === id)) 
+    const userResultName = userResultArray[0].name;
     setName(userResultName);
   }
 
   //Ability for user to input email to change ID and name
-  const emailChange = (event) => {
-    var stringEvent = event.target.value;
-    var userResultArray =  users.filter(x=>(x.email === stringEvent));
-    var userResultId = userResultArray[0].id;
+  const emailChange = ({ currentTarget: { value }}) => {
+    const userResultArray =  users.filter(x=>(x.email === value));
+    const userResultId = userResultArray[0].id;
     if(userResultId>0){
       setId(userResultId);
-      setEmail(stringEvent);
+      setEmail(value);
       changeContent(userResultId);
     } else{
       setId(0);
