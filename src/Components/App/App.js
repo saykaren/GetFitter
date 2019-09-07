@@ -50,11 +50,10 @@ const App = () => {
 
 
   const userChange = event => {
-    const stringEvent = event.currentTarget.value;
-    const eventTarget = parseInt(stringEvent);
-  
-    if (eventTarget> 0 && eventTarget < users.length-1){
-      var userResultArray =  users.filter(x=>(x.id === eventTarget));
+    const userIdEvent = parseInt(event.currentTarget.value);
+      
+    if (userIdEvent> 0 && userIdEvent < users.length-1){
+      var userResultArray =  users.filter(x=>(x.id === userIdEvent));
       var userResultId = userResultArray[0].id;
       var userResultEmail = userResultArray[0].email;
       const userResultFriendsId = userResultArray[0].friends;
