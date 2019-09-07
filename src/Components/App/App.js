@@ -52,16 +52,11 @@ const App = () => {
     const userIdEvent = parseInt(value);
 
     if (userIdEvent> 0 && userIdEvent < users.length-1){
-      const userResultArray =  users.filter(x=>(x.id === userIdEvent));
-      const userResultId = userResultArray[0].id;
-      const userResultEmail = userResultArray[0].email;
-      const userResultFriendsId = userResultArray[0].friends;
-      const userResultName = userResultArray[0].name;
-      setId(userResultId);
-      setEmail(userResultEmail);
-      changeContent(userResultId);
-      setFriends(userResultFriendsId);
-      setName(userResultName);    
+      const { id, email, friends, name } = users.find(user => user.id === userIdEvent);
+      setId(id);
+      setEmail(email);
+      setFriends(friends);
+      setName(name);  
     }else{
       setId(guestData[0].id);
       setName(guestData[0].name);
@@ -69,28 +64,20 @@ const App = () => {
     };
   }
 
-
-  const changeContent = (id)=>{
-    const userResultArray =  users.filter(x=>(x.id === id)) 
-    const userResultName = userResultArray[0].name;
-    setName(userResultName);
-  }
-
   //Ability for user to input email to change ID and name
   const emailChange = ({ currentTarget: { value }}) => {
-    const userResultArray =  users.filter(x=>(x.email === value));
-    const userResultId = userResultArray[0].id;
-    if(userResultId>0){
-      setId(userResultId);
-      setEmail(value);
-      changeContent(userResultId);
+    const {id, email, name } = users.find(user => user.email === value);
+    if(id>0){
+      setId(id);
+      setEmail(email);
+      setName(name)
     } else{
       setId(0);
       setName("Wrong email");
       setEmail("");
     };
   }
-  
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -117,7 +104,6 @@ const App = () => {
       </header>
       <section className="mainContent">
          <AboutMe Id={Id} name={name} email={email}/>
-  
          <Exercise Id={Id} name={name} email={email} friends={friends}/>
          <Sleep sleepId={Id} name={name}/> 
          <Hydration Id={Id} name={name} email={email} friends={friends}/>
