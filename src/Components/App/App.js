@@ -73,15 +73,10 @@ const App = () => {
         setId(id);
         setEmail(email);
         setName(name)
-      } else{
-        setId(0);
-        setName("Wrong email");
-        setEmail("");
       }; 
     }else{
-      setId(0);
       setName("WRONG EMAIL");
-      setEmail("");
+      setEmail(value);
     }
   }
  
