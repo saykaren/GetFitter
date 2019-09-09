@@ -66,9 +66,9 @@ const App = () => {
 
   //Ability for user to input email to change ID and name
   const emailChange = ({ currentTarget: { value }}) => {
-    const foundUser = users.find(user => user.email === value); 
+    const foundUser = users.find(user => user.email === value);  
     if (typeof(foundUser) !== "undefined" && typeof(foundUser) !==null){
-      const {id, email, name } = users.find(user => user.email === value);
+      const {id, email, name } = foundUser;
         if(id>0){
         setId(id);
         setEmail(email);
