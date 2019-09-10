@@ -49,19 +49,36 @@ const App = () => {
   }, []);
 
   const userChange = ({ currentTarget: { value }}) => {
-    const userIdEvent = parseInt(value);
-
-    if (userIdEvent> 0 && userIdEvent < users.length-1){
-      const { id, email, friends, name } = users.find(user => user.id === userIdEvent);
+    const userId = parseInt(value);
+    const testValidId = (e) =>{return e.id == userId;}
+   
+    const userIdValid =(e)=>{
+      const { id, email, friends, name } = users.find(user => user.id === e);
       setId(id);
       setEmail(email);
       setFriends(friends);
       setName(name);  
-    }else{
+    };
+
+    const userIdInvalid = () =>{
       setId(guestData[0].id);
       setName(guestData[0].name);
       setEmail(guestData[0].email);
     };
+ 
+    (users.some(testValidId)) ? userIdValid(userId) : userIdInvalid();
+
+    // if (userId> 0 && userId < users.length-1){
+    //   const { id, email, friends, name } = users.find(user => user.id === userId);
+    //   setId(id);
+    //   setEmail(email);
+    //   setFriends(friends);
+    //   setName(name);  
+    // }else{
+    //   setId(guestData[0].id);
+    //   setName(guestData[0].name);
+    //   setEmail(guestData[0].email);
+    // };
   }
 
   //Ability for user to input email to change ID and name
