@@ -10,31 +10,6 @@ import Footer from './Footer';
 
 const App = () => {
   
-  const guestData = [
-    {
-      "id":0,
-      "name":"Guest",
-      "address":"No address on file",
-      "email":"",
-      "strideLength":0,
-      "dailyStepGoal":0,
-      "friends":[
-        9,
-        27,
-        21,
-        13
-      ]
-    }
-  ]
-
-  const [users, setUsers] = useState([]);
-  const [Id, setId] = useState(guestData[0].id);
-  const [name, setName] = useState(guestData[0].name);
-  const [email, setEmail] = useState(guestData[0].email);
-  const [friends, setFriends] = useState(guestData[0].friends);
-  const [hasErrors, setErrors] = useState(false);
-  const [friendNames, setFriendNames] = useState(["No friends right now"]);
-  
   async function fetchData() {
     const res = await fetch('http://localhost:3000/users');
     res
@@ -48,9 +23,18 @@ const App = () => {
     fetchData();
   }, []);
 
+  const [users, setUsers] = useState([]);
+  const [Id, setId] = useState(0);
+  const [name, setName] = useState("Guest");
+  const [email, setEmail] = useState("");
+  const [friends, setFriends] = useState([]);
+  const [hasErrors, setErrors] = useState(false);
+  const [friendNames, setFriendNames] = useState(["No friends right now"]);
+  
+
   const userChange = ({ currentTarget: { value }}) => {
     const userId = parseInt(value);
-    const testValidId = (e) =>{return e.id == userId;}
+    const testValidId = (e) =>{return e.id === userId;}
    
     const userIdValid =(e)=>{
       const { id, email, friends, name } = users.find(user => user.id === e);
@@ -61,9 +45,9 @@ const App = () => {
     };
 
     const userIdInvalid = () =>{
-      setId(guestData[0].id);
-      setName(guestData[0].name);
-      setEmail(guestData[0].email);
+      setId(0);
+      setName(users[0].name);
+      setEmail(users[0].email);
     };
  
     (users.some(testValidId)) ? userIdValid(userId) : userIdInvalid();
