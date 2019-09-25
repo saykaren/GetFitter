@@ -8,8 +8,8 @@ const Exercise = ({friends, name, friendNames}) => {
   const limitDateData = activityData.filter(x=>(x.date === "2019/09/22")); //Limits data to 2019/09/22
   const newArrayFiltered = limitDateData.filter((x)=> friendsList.includes(x.userID)); //Limits that date now to friends -WORKING!!!! 8/20/2019
 
-  const specificItems = friendNames.map(y=>(y.map(x=>(x.name))));//pulls the names that match the friend ids
-  const filteredName = specificItems.map(x=>(x[0]));
+  //pulls the names that match the friend ids
+  const filteredName = friendNames.map(y=>(y.map(x=>(x.name)))).map(x=>(x[0]));
   
   const Bar = ({percent}) =>{
     return(
@@ -24,7 +24,7 @@ const Exercise = ({friends, name, friendNames}) => {
   const BarTextContent = () => {
     return (
       <div className="bar-text-content">
-        {newArrayFiltered.map((steps, x)=>( //used activityLocal but need to change to friends
+        {newArrayFiltered.map((steps, x)=>( 
           <div 
             className="text"
             key={steps.userID}
