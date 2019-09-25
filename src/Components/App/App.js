@@ -1,63 +1,74 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.scss';
 import NewFriend from './NewFriend';
 import FriendLookUp from './FriendLookUp';
 import Exercise from './Exercise';
 import Sleep from './Sleep';
-import userData from '../../data/users';
 import AboutMe from './AboutUser';
 import Hydration from './Hydration';
 import Footer from './Footer';
 
 const App = () => {
-
-  const [Id, setId] = useState(userData[0].id);
-  const [name, setName] = useState("Guest");
-  const [email, setEmail] = useState("");
-  const [friends, setFriends] = useState(userData[0].friends);
- 
-  const userChange = event => {
-    const stringEvent = event.target.value;
-    const eventTarget = parseInt(stringEvent);
   
-    if (eventTarget> 0 && eventTarget < userData.length-1){
-      var userResultArray = userData.filter(x=>(x.id === eventTarget));
-      var userResultId = userResultArray[0].id;
-      var userResultEmail = userResultArray[0].email;
-      const userResultFriendsId = userResultArray[0].friends;
-      setId(userResultId);
-      setEmail(userResultEmail);
-      changeContent(userResultId);
-      setFriends(userResultFriendsId);
-    }else{
-      setId(1);
-      setName("Guest");
-      setEmail("");
-    };
+  async function fetchData() {
+    const res = await fetch('http://localhost:3000/users');
+    res
+    .json()
+    .then(res => setUsers(res))
+    .catch(err => setErrors(err));
   };
 
-  const changeContent = (id)=>{
-    var userResultArray = userData.filter(x=>(x.id === id)) 
-    var userResultName = userResultArray[0].name;
-    setName(userResultName);
+  useEffect(() => {
+    
+    fetchData();
+  }, []);
+
+  const [users, setUsers] = useState([]);
+  const [Id, setId] = useState(0);
+  const [name, setName] = useState("Guest");
+  const [email, setEmail] = useState("");
+  const [friends, setFriends] = useState([]);
+  const [hasErrors, setErrors] = useState(false);
+  const [friendNames, setFriendNames] = useState(["No friends right now"]);
+  
+
+  const userChange = ({ currentTarget: { value }}) => {
+    const userId = parseInt(value);
+    const testValidId = (e) =>{return e.id === userId;}
+   
+    const userIdValid =(e)=>{
+      const { id, email, friends, name } = users.find(user => user.id === e);
+      setId(id);
+      setEmail(email);
+      setFriends(friends);
+      setName(name);  
+    };
+
+    const userIdInvalid = () =>{
+      setId(0);
+      setName(users[0].name);
+      setEmail(users[0].email);
+    };
+ 
+    (users.some(testValidId)) ? userIdValid(userId) : userIdInvalid();
   }
 
   //Ability for user to input email to change ID and name
-  const emailChange = (event) => {
-    var stringEvent = event.target.value;
-    var userResultArray = userData.filter(x=>(x.email === stringEvent));
-    var userResultId = userResultArray[0].id;
-    if(userResultId>0){
-      setId(userResultId);
-      setEmail(stringEvent);
-      changeContent(userResultId);
-    } else{
-      setId(0);
-      setName("Wrong email");
-      setEmail("");
-    };
+  const emailChange = ({ currentTarget: { value }}) => {
+    const foundUser = users.find(user => user.email === value);  
+    if (typeof(foundUser) !== "undefined" && typeof(foundUser) !==null){
+      const {id, email, name } = foundUser;
+        if(id>0){
+        setId(id);
+        setEmail(email);
+        setName(name)
+      }; 
+    }else{
+      setName("WRONG EMAIL");
+      setEmail(value);
+    }
   }
-
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -78,22 +89,15 @@ const App = () => {
               Email:
             </InputText>
           </section>
- 
-
         </div>
       </header>
       <section className="mainContent">
-        <AboutMe Id={Id} name={name} email={email}/>
-
-        <Exercise Id={Id} name={name} email={email} friends={friends}/>
-
-        <Sleep Id={Id} name={name} email={email}/>
-
-        <Hydration Id={Id} name={name} email={email} friends={friends}/>
-
-        <FriendLookUp Id={Id} name={name} email={email} friends={friends}/>
-        
-        <NewFriend Id={Id} name={name} email={email} friends={friends}/>       
+         <AboutMe Id={Id} name={name} email={email}/>
+         <Exercise Id={Id} name={name} email={email} friends={friends}/>
+         <Sleep sleepId={Id} name={name}/> 
+         <Hydration Id={Id} name={name} email={email} friends={friends}/>
+         <FriendLookUp users={users} Id={Id} name={name} email={email} friends={friends}/>
+         <NewFriend Id={Id} name={name} email={email} friends={friends}/>       
       </section>
       <footer className="footer">
         <Footer />

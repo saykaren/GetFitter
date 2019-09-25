@@ -24998,6 +24998,11 @@ const hydrationData = [
     "userID": 50,
     "date": "2019/09/22",
     "numOunces": 87
+  },
+  {
+    "userID": 0,
+    "date": "2019/09/22",
+    "numOunces": 80
   }
 ];
 
