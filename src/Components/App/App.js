@@ -51,18 +51,6 @@ const App = () => {
     };
  
     (users.some(testValidId)) ? userIdValid(userId) : userIdInvalid();
-
-    // if (userId> 0 && userId < users.length-1){
-    //   const { id, email, friends, name } = users.find(user => user.id === userId);
-    //   setId(id);
-    //   setEmail(email);
-    //   setFriends(friends);
-    //   setName(name);  
-    // }else{
-    //   setId(guestData[0].id);
-    //   setName(guestData[0].name);
-    //   setEmail(guestData[0].email);
-    // };
   }
 
   //Ability for user to input email to change ID and name
@@ -101,8 +89,6 @@ const App = () => {
               Email:
             </InputText>
           </section>
- 
-
         </div>
       </header>
       <section className="mainContent">
@@ -119,8 +105,6 @@ const App = () => {
     </div>
   );
 }
-
-
 
 const Input = ({value, onChangeInput, children}) => (
   <label
